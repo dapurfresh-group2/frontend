@@ -9,3 +9,24 @@ input {
   outline: none !important;
   border: 0px;
 }
+
+/* Custom splide.js */
+.splide__arrow {
+  visibility: hidden;
+}
+
+.splide__pagination__page {
+  height: 8px !important;
+  margin: 2px !important;
+}
+
+.splide__pagination__page.is-active {
+  background: #6AA434 !important;
+  transform: none !important;
+  width: 18px;
+  border-radius: 100px;
+}
+
+.splide__pagination.splide__pagination--ltr {
+  bottom: -20px;
+}
