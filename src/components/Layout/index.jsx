@@ -7,7 +7,7 @@ export default function Layout({ children }) {
         className="w-100 bg-white mx-auto h-100 min-vh-100"
         style={{ "max-width": "360px" }}
       >
-        {children}
+        <div>{children}</div>
       </div>
     </div>
   );
