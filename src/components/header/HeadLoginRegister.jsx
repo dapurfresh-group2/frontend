@@ -1,4 +1,4 @@
-import './HeadLoginRegister.css';
+import '../../assets/styles/headLoginRegister.css';
 
 function HeadLoginRegister() {
     return (
