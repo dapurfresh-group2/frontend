@@ -10,6 +10,23 @@ input {
   border: 0px;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+span {
+  margin: 0px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* Custom splide.js */
 .splide__arrow {
   visibility: hidden;
@@ -21,7 +38,7 @@ input {
 }
 
 .splide__pagination__page.is-active {
-  background: #6AA434 !important;
+  background: #6aa434 !important;
   transform: none !important;
   width: 18px;
   border-radius: 100px;
