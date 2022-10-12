@@ -3,6 +3,9 @@ import React from "react";
 import logoIcon from "@Assets/icons/logo-header.svg";
 import helpIcon from "@Assets/icons/help-icon.svg";
 import Search from "@Components/Search";
+import closeIcon from "@Assets/icons/close-icon.svg";
+import questionIcon from "@Assets/icons/question-icon.svg";
+import helpClickModal from "@Utils/interface/helpClickModal"
 
 export default function Header() {
   return (
@@ -14,7 +17,7 @@ export default function Header() {
             dapurfresh
           </p>
         </div>
-        <img src={helpIcon} alt="help" />
+        <img style={{cursor: "pointer"}} src={helpIcon} alt="help" onClick={() => helpClickModal(questionIcon, closeIcon)} />
       </div>
       <Search />
     </div>

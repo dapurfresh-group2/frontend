@@ -9,7 +9,7 @@ import profileIcon from "@Assets/icons/profile-icon.svg";
 
 export default function MenuItem({ name, fill }) {
   return (
-    <div class="col my-auto">
+    <div class="col my-auto" style={{cursor: "pointer"}}>
       <img
         src={
           name === "Belanja" && fill

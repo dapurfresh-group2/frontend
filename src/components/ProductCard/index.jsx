@@ -28,7 +28,7 @@ export default function ProductCard({ img }) {
             >
               Kangkung
             </h1>
-            <img src={infoIcon} alt="info" />
+            <img style={{cursor: "pointer"}} src={infoIcon} alt="info" />
           </div>
           <div
             className="rounded-pill mb-1"

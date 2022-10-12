@@ -11,7 +11,12 @@ export default function MenuBar({ isActive }) {
         borderColor: "gray",
       }}
     >
-      <div class="row h-100">
+      <div
+        class="row h-100"
+        style={{
+          "--bs-gutter-x": "0px !important",
+        }}
+      >
         <MenuItem name="Belanja" fill={isActive === "Belanja" ? true : false} />
         <MenuItem name="Riwayat" fill={isActive === "Riwayat" ? true : false} />
         <MenuItem name="Profil" fill={isActive === "Profil" ? true : false} />
