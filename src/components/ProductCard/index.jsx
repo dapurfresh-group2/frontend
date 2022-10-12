@@ -1,8 +1,13 @@
 import React from "react";
+import { useState } from "react";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css"; // optional
+import "tippy.js/themes/light.css";
+import "tippy.js/animations/scale.css";
+
 import PlusButtonText from "./PlusButtonText";
 import infoIcon from "@Assets/icons/info-icon.svg";
 import QuantityButton from "./QuantityButton";
-import { useState } from "react";
 
 export default function ProductCard({ img }) {
   const [quantity, setQuantity] = useState(0);
@@ -37,20 +42,16 @@ export default function ProductCard({ img }) {
             >
               Kangkung
             </h1>
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-toggle="tooltip"
-              data-bs-placement="top"
-              data-bs-custom-class="custom-tooltip"
-              data-bs-title="This top tooltip is themed via CSS variables."
+            <Tippy
+              maxWidth={185}
+              content="1 ikat kangkung setara dengan 500 gr"
+              placement="bottom-end"
+              theme="light"
+              trigger="click"
+              animation="fade"
             >
-              <img
-                style={{ cursor: "pointer" }}
-                src={infoIcon}
-                alt="info"
-              ></img>
-            </button>
+              <img style={{ cursor: "pointer" }} src={infoIcon} alt="info" />
+            </Tippy>
           </div>
           <div
             className="rounded-pill mb-1"
@@ -131,11 +132,6 @@ export default function ProductCard({ img }) {
       >
         Promo! Maksimal: 3
       </p>
-      <script
-        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-        crossorigin="anonymous"
-      ></script>
     </div>
   );
 }
