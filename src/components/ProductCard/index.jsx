@@ -1,8 +1,17 @@
 import React from "react";
 import PlusButtonText from "./PlusButtonText";
 import infoIcon from "@Assets/icons/info-icon.svg";
+import QuantityButton from "./QuantityButton";
+import { useState } from "react";
 
 export default function ProductCard({ img }) {
+  const [quantity, setQuantity] = useState(0);
+  const onClickMinHandler = () => {
+    setQuantity(quantity - 1);
+  };
+  const onClickPlusHandler = () => {
+    setQuantity(quantity + 1);
+  };
   return (
     <div
       className="mb-3 p-3 rounded"
@@ -28,7 +37,20 @@ export default function ProductCard({ img }) {
             >
               Kangkung
             </h1>
-            <img style={{cursor: "pointer"}} src={infoIcon} alt="info" />
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              data-bs-custom-class="custom-tooltip"
+              data-bs-title="This top tooltip is themed via CSS variables."
+            >
+              <img
+                style={{ cursor: "pointer" }}
+                src={infoIcon}
+                alt="info"
+              ></img>
+            </button>
           </div>
           <div
             className="rounded-pill mb-1"
@@ -76,7 +98,15 @@ export default function ProductCard({ img }) {
             </h3>
           </div>
           <div className="d-flex align-items-center mt-1">
-            <PlusButtonText />
+            {quantity === 0 ? (
+              <PlusButtonText onClickPlusHandler={onClickPlusHandler} />
+            ) : (
+              <QuantityButton
+                quantity={quantity}
+                onClickMinHandler={onClickMinHandler}
+                onClickPlusHandler={onClickPlusHandler}
+              />
+            )}
             <p
               className="ms-2"
               style={{
@@ -101,6 +131,11 @@ export default function ProductCard({ img }) {
       >
         Promo! Maksimal: 3
       </p>
+      <script
+        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"
+      ></script>
     </div>
   );
 }

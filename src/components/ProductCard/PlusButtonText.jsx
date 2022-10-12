@@ -1,15 +1,17 @@
 import React from "react";
 import plusIcon from "@Assets/icons/plus-icon.svg";
 
-export default function PlusButtonText() {
+export default function PlusButtonText({ onClickPlusHandler }) {
   return (
     <div
       className="d-flex text-white"
+      onClick={onClickPlusHandler}
       style={{
         boxShadow: "1px 2px 5px 0px rgba(0, 0, 0, 0.15)",
         backgroundColor: "rgba(106, 164, 52, 1)",
         borderRadius: "5px",
-        padding: "5px 10px"
+        padding: "5px 10px",
+        cursor: "pointer",
       }}
     >
       <img src={plusIcon} alt="plus-icon" />
