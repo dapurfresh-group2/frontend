@@ -47,3 +47,7 @@ a {
 .splide__pagination.splide__pagination--ltr {
   bottom: -20px;
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}
