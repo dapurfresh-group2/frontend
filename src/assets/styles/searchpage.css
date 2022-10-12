@@ -1,0 +1,76 @@
+/* Page Search */
+
+.container-search {
+    background: #F1F2F6;
+    border-radius: 30px;
+
+    width: 296px;
+    height: 40px;
+}
+
+.input-search {
+    width: 233px;
+    height: 15px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+
+    letter-spacing: 0.2px;
+
+    color: #707585;
+    background: #F1F2F6;
+}
+
+.prncarian-produk-terpopuler {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.2px;
+
+    color: #14181B;
+}
+
+.tag-produk-terpopuler {
+    background: #F1F2F6;
+    border-radius: 100px;
+
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #4E5356;
+    border: none;
+}
+
+/* Page Not Found */
+
+.container-notfound {
+    margin-top: 100px;
+}
+
+.icon-no-data {
+    width: 65px;
+    height: 124px;
+}
+
+.notfound-title {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+
+    text-align: center;
+    letter-spacing: 0.2px;
+
+    color: #14181B;
+}
+
+.notfound-description {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 22px;
+
+    text-align: center;
+    letter-spacing: 0.02em;
+
+    color: #14181B;
+
+}
