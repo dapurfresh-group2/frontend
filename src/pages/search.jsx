@@ -1,28 +1,54 @@
 import React from "react";
+import { useState } from 'react';
 import '../assets/styles/searchpage.css';
-import SearchPageComponents from "../components/Search/SearchPageComponents";
+import arrowButton from '../assets/icons/arrow.png';
+import iconSearch from '../assets/icons/ic-search.png';
+import ProductCard from "../components/ProductCard";
+import PencarianProduk from "../components/PencarianProduk";
+import kangkungImage from "@Assets/images/product/kangkung.png";
+import resetInputImg from '../assets/icons/reset-input.png';
+
 
 function PageSearch() {
+    const [inputSearch, setInputSearch] = useState();
+
+    function handleChange(event) { setInputSearch(event.target.value); }
+
+    function testSearch() {
+        alert(inputSearch);
+    }
+
+    function resetInput() {
+        setInputSearch("");
+    }
+
+
     return (
         <div>
-            <SearchPageComponents />
-            <div className="prncarian-produk-terpopuler mx-3 mt-4 mb-3">Pencarian Produk Terpopuler</div>
 
-            <div className="d-flex flex-wrap mx-3">
-                <button className="tag-produk-terpopuler px-3 py-2 mx-1 my-2">Kentang</button>
-                <button className="tag-produk-terpopuler px-3 py-2 mx-1 my-2">Tomat hijau</button>
-                <button className="tag-produk-terpopuler px-3 py-2 mx-1 my-2">Cabe hijau</button>
+            <div className="d-flex align-items-center mx-2 my-2">
+                <div><a href="/"><img src={arrowButton} alt="arrow button" /></a></div>
+                <div className='container-search d-flex align-items-center mx-2'>
+                    <div className='cursor-pointer ms-3 me-2' onClick={testSearch}><img src={iconSearch} alt="icon search" /></div>
 
-                <button className="tag-produk-terpopuler px-3 py-2 mx-1 my-2">Ati ampela</button>
-                <button className="tag-produk-terpopuler px-3 py-2 mx-1 my-2">Merica</button>
-                <button className="tag-produk-terpopuler px-3 py-2 mx-1 my-2">Kunyit</button>
+                    <div className="d-flex align-items-center">
+                        <input
+                            type="text"
+                            className='input-search'
+                            placeholder='Cari sayur,bumbu dapur, lauk pauk...'
+                            value={inputSearch}
+                            onChange={handleChange}
+                        />
 
-                <button className="tag-produk-terpopuler px-3 py-2 mx-1 my-2">Jahe</button>
-                <button className="tag-produk-terpopuler px-3 py-2 mx-1 my-2">Beras merah</button>
-                <button className="tag-produk-terpopuler px-3 py-2 mx-1 my-2">Kacang hijau</button>
-                <button className="tag-produk-terpopuler px-3 py-2 mx-1 my-2">Tempe</button>
+                        {inputSearch && <div onClick={resetInput} className='cursor-pointer'><img src={resetInputImg} alt="reset input" /></div>}
 
+
+                    </div>
+                </div>
             </div>
+
+            {inputSearch ? <div className="px-3 mt-3"><ProductCard img={kangkungImage} /></div>
+                : <PencarianProduk />}
 
         </div>
     );
