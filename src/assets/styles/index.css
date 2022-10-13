@@ -51,6 +51,10 @@ a {
   margin: 0px !important;
 }
 
+.swal2-close {
+  transition: none !important;
+}
+
 /* Custom splide.js */
 .splide__arrow {
   visibility: hidden;

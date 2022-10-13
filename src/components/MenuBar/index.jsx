@@ -17,9 +17,9 @@ export default function MenuBar({ isActive }) {
           "--bs-gutter-x": "0px !important",
         }}
       >
-        <MenuItem name="Belanja" fill={isActive === "Belanja" ? true : false} />
-        <MenuItem name="Riwayat" fill={isActive === "Riwayat" ? true : false} />
-        <MenuItem name="Profil" fill={isActive === "Profil" ? true : false} />
+        <MenuItem name="Belanja" path="/" fill={isActive === "Belanja" ? true : false} />
+        <MenuItem name="Riwayat" path="/historyorder" fill={isActive === "Riwayat" ? true : false} />
+        <MenuItem name="Profil" path="/profile" fill={isActive === "Profil" ? true : false} />
       </div>
     </div>
   );

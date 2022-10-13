@@ -32,6 +32,7 @@ export default function Category() {
               height: "100px",
               position: "relative",
               borderRadius: "5px",
+              cursor: "pointer",
               backgroundImage: `linear-gradient(to bottom, rgba(196, 196, 196, 0), rgba(0, 0, 0, 0.6)), url(${bumbuImage})`,
             }}
           >
@@ -57,6 +58,7 @@ export default function Category() {
               height: "100px",
               position: "relative",
               borderRadius: "5px",
+              cursor: "pointer",
               backgroundImage: `linear-gradient(to bottom, rgba(196, 196, 196, 0), rgba(0, 0, 0, 0.6)), url(${sayurImage})`,
             }}
           >
@@ -82,6 +84,7 @@ export default function Category() {
               height: "100px",
               position: "relative",
               borderRadius: "5px",
+              cursor: "pointer",
               backgroundImage: `linear-gradient(to bottom, rgba(196, 196, 196, 0), rgba(0, 0, 0, 0.6)), url(${sembakoImage})`,
             }}
           >
@@ -107,6 +110,7 @@ export default function Category() {
               height: "100px",
               position: "relative",
               borderRadius: "5px",
+              cursor: "pointer",
               backgroundImage: `linear-gradient(to bottom, rgba(196, 196, 196, 0), rgba(0, 0, 0, 0.6)), url(${buahImage})`,
             }}
           >
