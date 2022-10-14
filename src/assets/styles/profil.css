@@ -1,0 +1,57 @@
+.avatar-image {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.profil-name {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+
+    color: #444444;
+}
+
+.edit-profil {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+
+    color: #444444;
+}
+
+.deskription-profil-menu {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+
+    color: #444444;
+}
+
+.line-bottom {
+    border-bottom: 1px solid #C4C4C4;
+    width: 100%;
+}
+
+.vector-icon {
+    width: 25px;
+}
+
+.btn-logout {
+    width: 320px;
+    height: 46px;
+
+    background: #FCFCFC;
+    border: 1px solid #EF2636;
+    border-radius: 6px;
+
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+
+    color: #EF2636;
+}
+
+.btn-logout:hover {
+    background: #FCFCFC;
+}

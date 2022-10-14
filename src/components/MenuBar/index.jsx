@@ -12,7 +12,7 @@ export default function MenuBar({ isActive }) {
       }}
     >
       <div
-        class="row h-100"
+        className="row h-100"
         style={{
           "--bs-gutter-x": "0px !important",
         }}

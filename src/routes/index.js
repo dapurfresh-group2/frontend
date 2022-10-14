@@ -4,6 +4,7 @@ import Login from "@Pages/login";
 import Register from "@Pages/register";
 import PageSearch from "@Pages/search";
 import HistoryOrder from "@Pages/historyorder";
+import Profil from "@Pages/profil";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/historyorder",
     element: <HistoryOrder />,
+  },
+  {
+    path: "/profil",
+    element: <Profil />,
   },
 ]);
 
