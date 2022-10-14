@@ -6,6 +6,7 @@ import { useState } from 'react';
 import HeadLoginRegister from "@Components/Header/HeadLoginRegister";
 import line1 from "@Assets/images/loginregister/line-1.png";
 import line2 from "@Assets/images/loginregister/line-2.png";
+import FormLoginRegister from "@Components/LoginRegister";
 
 
 
@@ -26,27 +27,27 @@ export default function Login() {
     <div>
       <HeadLoginRegister />
 
+
       <div className="d-flex justify-content-center mt-5">
         <div className="card-masuk shadow ">
 
           <form onSubmit={handleSubmit} className="d-flex flex-column align-items-center">
             <div className="my-2 text-masuk">Masuk</div>
-            <input
-              type="email"
-              className="my-2 field-input"
+
+            <FormLoginRegister
+              type="text"
               placeholder="Username"
               value={username}
               onChange={(event) => { setUsername(event.target.value); }}
-              required
             />
-            <input
+
+            <FormLoginRegister
               type="password"
-              className="my-2 field-input"
               placeholder="Password"
               value={password}
               onChange={(event) => { setPassword(event.target.value); }}
-              required
             />
+
 
             <div className="my-2">
               <button type="submit" className="btn-masuk">Masuk</button>
