@@ -10,7 +10,7 @@ import vectorPrivacy from '../assets/images/profil/vector-privacy.png';
 import vectorTentang from '../assets/images/profil/vector-tentang.png';
 
 
-function Profil() {
+function Profile() {
 
     function Logout() {
         alert("kamu telah logout");
@@ -60,4 +60,4 @@ function Profil() {
     );
 }
 
-export default Profil;
+export default Profile;
