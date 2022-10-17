@@ -6,7 +6,7 @@ import { useState } from "react";
 import HeadLoginRegister from "@Components/Header/HeadLoginRegister";
 import line1 from "@Assets/images/loginregister/line-1.png";
 import line2 from "@Assets/images/loginregister/line-2.png";
-import InputAuth from "@Components/Input/InputAuth";
+import FormLoginRegister from "@Components/LoginRegister";
 
 export default function Login() {
   const [username, setUsername] = useState();
@@ -30,8 +30,9 @@ export default function Login() {
             className="d-flex flex-column align-items-center"
           >
             <div className="my-2 text-masuk">Masuk</div>
-            <InputAuth
-              type="email"
+
+            <FormLoginRegister
+              type="text"
               placeholder="Username"
               value={username}
               onChange={(event) => {
@@ -39,7 +40,7 @@ export default function Login() {
               }}
             />
 
-            <InputAuth
+            <FormLoginRegister
               type="password"
               placeholder="Password"
               value={password}
