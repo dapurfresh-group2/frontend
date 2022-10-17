@@ -25,7 +25,7 @@ function Profil() {
                 <div><img src={avatarImg} alt="avatar" className="avatar-image" /></div>
                 <div className="d-flex flex-column mx-3">
                     <div className="profil-name">Fulan</div>
-                    <div><a href="/"><span className="edit-profil">Edit Profil</span> <span className="mx-2"><img src={arrowProfilSmall} alt="arow profil" /></span></a></div>
+                    <div><a href="/editprofil"><span className="edit-profil">Edit Profil</span> <span className="mx-2"><img src={arrowProfilSmall} alt="arow profil" /></span></a></div>
                 </div>
             </div>
 

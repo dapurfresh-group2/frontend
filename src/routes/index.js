@@ -5,6 +5,7 @@ import Register from "@Pages/register";
 import PageSearch from "@Pages/search";
 import HistoryOrder from "@Pages/historyorder";
 import Profil from "@Pages/profil";
+import EditProfil from "@Pages/editprofil";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: "/profil",
     element: <Profil />,
+  },
+  {
+    path: "/editprofil",
+    element: <EditProfil />,
   },
 ]);
 
