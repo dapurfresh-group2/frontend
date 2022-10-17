@@ -23,7 +23,7 @@ function EditProfil() {
 
     return (
         <div>
-            <HeaderBgWhite ahref="/profil" title="Edit Profil" />
+            <HeaderBgWhite ahref="/profile" title="Edit Profil" />
 
             <form onSubmit={handleSubmit}>
                 <div className="container-avatar d-flex justify-content-center align-items-center">
