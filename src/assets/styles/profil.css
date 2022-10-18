@@ -60,6 +60,14 @@
 
 .container-header-bg-white {
     border-bottom: 2px solid #E5E5E5;
+    position: fixed;
+    height: 50px;
+    width: 360px;
+    background-color: #FFFFFF;
+}
+
+.extra-container-blank {
+    height: 50px;
 }
 
 .title-header {

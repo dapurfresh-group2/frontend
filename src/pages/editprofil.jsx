@@ -24,6 +24,7 @@ function EditProfil() {
     return (
         <div>
             <HeaderBgWhite ahref="/profile" title="Edit Profil" />
+            <div className="extra-container-blank"></div>
 
             <form onSubmit={handleSubmit}>
                 <div className="container-avatar d-flex justify-content-center align-items-center">
