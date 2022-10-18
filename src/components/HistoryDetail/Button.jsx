@@ -1,4 +1,5 @@
 import React from "react";
+import ButtonMain from "@Components/Button/ButtonMain";
 
 export default function Button({ status }) {
   return (
@@ -8,18 +9,7 @@ export default function Button({ status }) {
         padding: "15px",
       }}
     >
-      <button
-        className="w-100 text-white"
-        style={{
-          backgroundColor: "rgba(106, 164, 52, 1)",
-          fontWeight: "700",
-          fontSize: "17px",
-          borderRadius: "5px",
-          padding: "12px 0px",
-        }}
-      >
-        Bantuan
-      </button>
+      <ButtonMain text="Bantuan" />
       {status === "proses" ? (
         <button
           className="w-100 bg-white"

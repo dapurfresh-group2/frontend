@@ -8,6 +8,7 @@ import HistoryOrderDetail from "@Pages/historyorderdetail";
 import Profile from "@Pages/profile";
 import EditProfil from "@Pages/editprofil";
 import ProdukTerpopuler from "@Pages/produkterpopuler";
+import Checkout from "@Pages/checkout";
 
 
 const router = createBrowserRouter([
@@ -44,8 +45,12 @@ const router = createBrowserRouter([
     element: <EditProfil />,
   },
   {
-    path: "/produkterpopuler",
+    path: "/popularproducts",
     element: <ProdukTerpopuler />,
+  },
+  {
+    path: "/checkout",
+    element: <Checkout />,
   },
 ]);
 

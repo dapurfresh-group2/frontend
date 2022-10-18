@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 export default function HeaderTextWithBackButton({ text }) {
   const navigate = useNavigate();
   return (
-    <div className="d-flex border-bottom px-3 py-3">
+    <div className="d-flex bg-white border-bottom px-3 py-3 fixed-top w-100 mx-auto" style={{maxWidth: "360px"}}>
       <img
         src={arrowIcon}
         onClick={() => navigate(-1)}

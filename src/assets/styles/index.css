@@ -23,6 +23,19 @@ textarea,
 input {
   outline: none !important;
   border: 0px;
+  padding: 0px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 h1,
@@ -87,4 +100,8 @@ button {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.hover-underline:hover {
+  text-decoration: underline;
 }
