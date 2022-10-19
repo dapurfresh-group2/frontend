@@ -4,6 +4,7 @@ import Category from "@Components/Category";
 import ProductCard from "@Components/ProductCard";
 import kangkungImage from "@Assets/images/product/kangkung.png";
 import MenuBar from "@Components/MenuBar";
+import ButtonCart from "@Components/Button/ButtonCart";
 
 export default function Home() {
   return (
@@ -37,6 +38,7 @@ export default function Home() {
       </div>
 
       <MenuBar isActive="Belanja" />
+      <ButtonCart totalBill="4.680" quantity="1" bottom="80px" />
     </div>
   );
 }
