@@ -6,9 +6,19 @@ import DeliveryDetail from "@Components/HistoryDetail/DeliveryDetail";
 import OrderDetail from "@Components/HistoryDetail/OrderDetail";
 import PaymentDetail from "@Components/HistoryDetail/PaymentDetail";
 import Button from "@Components/HistoryDetail/Button";
+import deleteModal from "../utils/interface/deleteModal";
 
 export default function HistoryOrderDetail() {
   const { id } = useParams();
+
+  const deleteOrderHandler = () => {
+    alert("Delete order called");
+  };
+
+  const cancelOnClickHandler = () => {
+    deleteModal(deleteOrderHandler);
+  };
+
   const status = "proses";
   return (
     <div>
@@ -17,7 +27,7 @@ export default function HistoryOrderDetail() {
       <DeliveryDetail />
       <OrderDetail />
       <PaymentDetail />
-      <Button status={status} />
+      <Button status={status} cancelOrderOnClick={cancelOnClickHandler} />
     </div>
   );
 }

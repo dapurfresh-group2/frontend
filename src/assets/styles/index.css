@@ -77,6 +77,27 @@ button {
   transition: none !important;
 }
 
+.swal2-actions {
+  width: 100% !important;
+  justify-content: flex-end !important;
+}
+
+.swal2-cancel {
+  color: rgba(159, 163, 166, 1);
+  margin-right: 15px !important;
+  margin-left: 10px !important;
+  font-weight: 600;
+  font-size: 12px;
+  background-color: #fff !important;
+}
+
+.swal2-confirm {
+  color: rgba(84, 127, 30, 1);
+  font-weight: 600;
+  font-size: 12px;
+  background-color: #fff !important;
+}
+
 /* Custom splide.js */
 .splide__arrow {
   visibility: hidden;

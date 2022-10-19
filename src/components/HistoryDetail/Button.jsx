@@ -1,7 +1,7 @@
 import React from "react";
 import ButtonMain from "@Components/Button/ButtonMain";
 
-export default function Button({ status }) {
+export default function Button({ status, cancelOrderOnClick }) {
   return (
     <div
       style={{
@@ -12,6 +12,7 @@ export default function Button({ status }) {
       <ButtonMain text="Bantuan" />
       {status === "proses" ? (
         <button
+          onClick={() => cancelOrderOnClick()}
           className="w-100 bg-white"
           style={{
             fontWeight: "700",
