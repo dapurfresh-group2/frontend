@@ -1,0 +1,29 @@
+.menu-kategori {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+
+    color: #707585;
+}
+
+.header-list-kategori {
+    width: 360px;
+    height: 110px;
+    position: fixed;
+    background-color: #FFFFFF;
+    border-bottom: 2px solid #E5E5E5;
+}
+
+.extra-blank {
+    height: 110px;
+}
+
+.menu-kategori-active {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+
+    color: #6AA434;
+
+    border-bottom: 3px solid #6AA434;
+}

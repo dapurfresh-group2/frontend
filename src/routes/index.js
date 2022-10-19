@@ -8,6 +8,7 @@ import HistoryOrderDetail from "@Pages/historyorderdetail";
 import Profile from "@Pages/profile";
 import EditProfil from "@Pages/editprofil";
 import ProdukTerpopuler from "@Pages/produkterpopuler";
+import ListKategori from "@Pages/listkategori";
 
 
 const router = createBrowserRouter([
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
   {
     path: "/produkterpopuler",
     element: <ProdukTerpopuler />,
+  },
+  {
+    path: "/listkategori",
+    element: <ListKategori />,
   },
 ]);
 
