@@ -9,6 +9,7 @@ import Profile from "@Pages/profile";
 import EditProfil from "@Pages/editprofil";
 import ProdukTerpopuler from "@Pages/produkterpopuler";
 import ListKategori from "@Pages/listkategori";
+import Checkout from "@Pages/checkout";
 
 
 const router = createBrowserRouter([
@@ -45,12 +46,16 @@ const router = createBrowserRouter([
     element: <EditProfil />,
   },
   {
-    path: "/produkterpopuler",
+    path: "/popularproducts",
     element: <ProdukTerpopuler />,
   },
   {
     path: "/listkategori",
     element: <ListKategori />,
+  },
+  {
+    path: "/checkout",
+    element: <Checkout />,
   },
 ]);
 

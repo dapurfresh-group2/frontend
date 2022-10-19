@@ -46,7 +46,6 @@ export default function OrderDetail() {
           >
             Catatan Tambahan
           </p>
-
           <p
             style={{
               fontSize: "12px",

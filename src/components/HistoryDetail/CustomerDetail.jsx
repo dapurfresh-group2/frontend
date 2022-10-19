@@ -2,7 +2,7 @@ import React from "react";
 
 export default function CustomerDetail({ status }) {
   return (
-    <div className="border-bottom pb-3">
+    <div className="border-bottom pb-3" style={{marginTop: "52px"}}>
       <div
         className="d-flex justify-content-between px-3 py-2 mb-1"
         style={{ backgroundColor: "rgba(242, 242, 242, 1)" }}
