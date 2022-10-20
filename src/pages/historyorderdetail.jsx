@@ -9,7 +9,7 @@ import Button from "@Components/HistoryDetail/Button";
 import deleteModal from "../utils/interface/deleteModal";
 
 export default function HistoryOrderDetail() {
-  const { id } = useParams();
+  // const { id } = useParams();
 
   const deleteOrderHandler = () => {
     alert("Delete order called");
