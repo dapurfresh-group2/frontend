@@ -2,8 +2,8 @@
 import React from "react";
 import { useState } from "react";
 import "@Assets/styles/profil.css";
-import HeaderBgWhite from "@Components/Header/HeaderBgWhite";
 import InputEditProfil from "@Components/Profil/inputeditprofil";
+import HeaderTextWithBackButton from "@Components/Header/HeaderWithBackButton";
 import avatarImg from "@Assets/images/profil/avatar.png";
 import cameraImg from "@Assets/images/profil/camera.png";
 
@@ -23,7 +23,7 @@ function EditProfil() {
 
   return (
     <div>
-      <HeaderBgWhite ahref="/profile" title="Edit Profil" />
+      <HeaderTextWithBackButton text="Edit Profil" />
       <div className="extra-container-blank"></div>
 
       <form onSubmit={handleSubmit}>
