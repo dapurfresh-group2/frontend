@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { useState } from "react";
 import "@Assets/styles/profil.css";
@@ -37,7 +38,7 @@ function EditProfil() {
             <input
               id="file-input"
               type="file"
-              value={selectedFile}
+              // value={selectedFile}
               onChange={(event) => setSelectedFile(event.target.files[0])}
             />
           </label>

@@ -42,7 +42,7 @@ const router = createBrowserRouter([
     element: <Profile />,
   },
   {
-    path: "/editprofil",
+    path: "/editprofile",
     element: <EditProfil />,
   },
   {
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
     element: <ProdukTerpopuler />,
   },
   {
-    path: "/listkategori",
+    path: "/categories",
     element: <ListKategori />,
   },
   {

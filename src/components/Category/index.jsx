@@ -26,108 +26,117 @@ export default function Category() {
         aria-label="My Favorite Images"
       >
         <SplideSlide>
-          <div
-            style={{
-              width: "100px",
-              height: "100px",
-              position: "relative",
-              borderRadius: "5px",
-              cursor: "pointer",
-              backgroundImage: `linear-gradient(to bottom, rgba(196, 196, 196, 0), rgba(0, 0, 0, 0.6)), url(${bumbuImage})`,
-            }}
-          >
-            <p
-              className="text-white"
+          <a href="/categories">
+            <div
               style={{
-                position: "absolute",
-                fontSize: "14px",
-                fontWeight: "700",
-                marginBottom: "5px",
-                bottom: "0px",
-                left: "10px",
+                width: "100px",
+                height: "100px",
+                position: "relative",
+                borderRadius: "5px",
+                cursor: "pointer",
+                backgroundImage: `linear-gradient(to bottom, rgba(196, 196, 196, 0), rgba(0, 0, 0, 0.6)), url(${bumbuImage})`,
               }}
             >
-              Bumbu
-            </p>
-          </div>
+              <p
+                className="text-white"
+                style={{
+                  position: "absolute",
+                  fontSize: "14px",
+                  fontWeight: "700",
+                  marginBottom: "5px",
+                  bottom: "0px",
+                  left: "10px",
+                }}
+              >
+                Bumbu
+              </p>
+            </div>
+          </a>
+        </SplideSlide>
+
+        <SplideSlide>
+          <a href="/categories">
+            <div
+              style={{
+                width: "100px",
+                height: "100px",
+                position: "relative",
+                borderRadius: "5px",
+                cursor: "pointer",
+                backgroundImage: `linear-gradient(to bottom, rgba(196, 196, 196, 0), rgba(0, 0, 0, 0.6)), url(${sayurImage})`,
+              }}
+            >
+              <p
+                className="text-white"
+                style={{
+                  position: "absolute",
+                  fontSize: "14px",
+                  fontWeight: "700",
+                  marginBottom: "5px",
+                  bottom: "0px",
+                  left: "10px",
+                }}
+              >
+                Sayur & Kacang
+              </p>
+            </div>
+          </a>
         </SplideSlide>
         <SplideSlide>
-          <div
-            style={{
-              width: "100px",
-              height: "100px",
-              position: "relative",
-              borderRadius: "5px",
-              cursor: "pointer",
-              backgroundImage: `linear-gradient(to bottom, rgba(196, 196, 196, 0), rgba(0, 0, 0, 0.6)), url(${sayurImage})`,
-            }}
-          >
-            <p
-              className="text-white"
+          <a href="/categories">
+            <div
               style={{
-                position: "absolute",
-                fontSize: "14px",
-                fontWeight: "700",
-                marginBottom: "5px",
-                bottom: "0px",
-                left: "10px",
+                width: "100px",
+                height: "100px",
+                position: "relative",
+                borderRadius: "5px",
+                cursor: "pointer",
+                backgroundImage: `linear-gradient(to bottom, rgba(196, 196, 196, 0), rgba(0, 0, 0, 0.6)), url(${sembakoImage})`,
               }}
             >
-              Sayur & Kacang
-            </p>
-          </div>
+              <p
+                className="text-white"
+                style={{
+                  position: "absolute",
+                  fontSize: "14px",
+                  fontWeight: "700",
+                  marginBottom: "5px",
+                  bottom: "0px",
+                  left: "10px",
+                }}
+              >
+                Sembako
+              </p>
+            </div>
+          </a>
         </SplideSlide>
         <SplideSlide>
-          <div
-            style={{
-              width: "100px",
-              height: "100px",
-              position: "relative",
-              borderRadius: "5px",
-              cursor: "pointer",
-              backgroundImage: `linear-gradient(to bottom, rgba(196, 196, 196, 0), rgba(0, 0, 0, 0.6)), url(${sembakoImage})`,
-            }}
-          >
-            <p
-              className="text-white"
+          <a href="/categories">
+            <div
               style={{
-                position: "absolute",
-                fontSize: "14px",
-                fontWeight: "700",
-                marginBottom: "5px",
-                bottom: "0px",
-                left: "10px",
+                width: "100px",
+                height: "100px",
+                position: "relative",
+                borderRadius: "5px",
+                cursor: "pointer",
+                backgroundImage: `linear-gradient(to bottom, rgba(196, 196, 196, 0), rgba(0, 0, 0, 0.6)), url(${buahImage})`,
               }}
             >
-              Sembako
-            </p>
-          </div>
-        </SplideSlide>
-        <SplideSlide>
-          <div
-            style={{
-              width: "100px",
-              height: "100px",
-              position: "relative",
-              borderRadius: "5px",
-              cursor: "pointer",
-              backgroundImage: `linear-gradient(to bottom, rgba(196, 196, 196, 0), rgba(0, 0, 0, 0.6)), url(${buahImage})`,
-            }}
-          >
-            <p
-              className="text-white"
-              style={{
-                position: "absolute",
-                fontSize: "14px",
-                fontWeight: "700",
-                marginBottom: "5px",
-                bottom: "0px",
-                left: "10px",
-              }}
-            >
-              Buah
-            </p>
-          </div>
+              <p
+                className="text-white"
+                style={{
+                  position: "absolute",
+                  fontSize: "14px",
+                  fontWeight: "700",
+                  marginBottom: "5px",
+                  bottom: "0px",
+                  left: "10px",
+                }}
+              >
+                Buah
+              </p>
+            </div>
+          </a>
         </SplideSlide>
       </Splide>
     </div>

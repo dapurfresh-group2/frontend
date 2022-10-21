@@ -24,7 +24,7 @@ export default function Home() {
             Produk Terpopuler
           </h1>
           <a
-            href="https://google.com"
+            href="/popularproducts"
             style={{
               fontSize: "12px",
               fontWeight: "700",
