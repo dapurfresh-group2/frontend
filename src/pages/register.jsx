@@ -8,7 +8,8 @@ import FormLoginRegister from "@Components/LoginRegister";
 import line1 from "@Assets/images/loginregister/line-1.png";
 import line2 from "@Assets/images/loginregister/line-2.png";
 
-
+import Swal from 'sweetalert2';
+import axios from "axios";
 
 
 
@@ -20,7 +21,29 @@ export default function Register() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        alert(`Name: ${name} Phone: ${phone} Username: ${username} Password: ${password}`);
+
+        axios.post('http://108.137.148.110/api/v1/auth/register', {
+            name: name,
+            phone: phone,
+            username: username,
+            password: password,
+
+        })
+            .then(function (response) {
+                console.log(response);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Pendaftaran Berhasil',
+                    text: 'Silahkan masuk dengan menggunakan username dan password'
+                });
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+
+
         setName("");
         setPhone("");
         setUsername("");

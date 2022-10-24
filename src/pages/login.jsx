@@ -8,13 +8,39 @@ import line1 from "@Assets/images/loginregister/line-1.png";
 import line2 from "@Assets/images/loginregister/line-2.png";
 import FormLoginRegister from "@Components/LoginRegister";
 
+import Swal from 'sweetalert2';
+import axios from "axios";
+
 export default function Login() {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
 
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(`The username you entered was: ${username} and password ${password}`);
+
+    axios.post('http://108.137.148.110/api/v1/auth/login', {
+      username: username,
+      password: password
+    })
+      .then(function (response) {
+
+        if (response.data.message === "success") {
+          localStorage.setItem("token", response.data.token);
+          window.location = "/";
+        } else if (response.data === "incorrect password") {
+          Swal.fire({
+            icon: 'error',
+            title: 'Password Salah'
+
+          });
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+
     setUsername("");
     setPassword("");
   };
