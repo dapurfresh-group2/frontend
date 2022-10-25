@@ -1,10 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
+import Swal from 'sweetalert2';
+
 import "@Assets/styles/profil.css";
 import InputEditProfil from "@Components/Profil/inputeditprofil";
 import HeaderTextWithBackButton from "@Components/Header/HeaderWithBackButton";
-import avatarImg from "@Assets/images/profil/avatar.png";
 import cameraImg from "@Assets/images/profil/camera.png";
 
 function EditProfil() {
@@ -12,14 +15,63 @@ function EditProfil() {
   const [phone, setPhone] = useState();
   const [address, setAddress] = useState();
   const [selectedFile, setSelectedFile] = useState(null);
+  const [avatarImgApi, setAvatarImgApi] = useState("");
+
+
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(`Name: ${name} Phone: ${phone} Address: ${address}`);
-    setName("");
-    setPhone("");
-    setAddress("");
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    };
+
+    axios.put('http://108.137.148.110/api/v1/profile/edit', {
+      name: name,
+      phone: phone,
+      address: address,
+      image: null
+    }, config)
+      .then(function (response) {
+
+        if (response.data.message === "success") {
+
+          Swal.fire({
+            icon: 'success',
+            title: 'Berhasil',
+            text: 'Profil berhasil disimpan'
+          });
+        }
+
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
+
+
+
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    };
+
+    axios.get('http://108.137.148.110/api/v1/profile/user', config)
+      .then(function (response) {
+        setAvatarImgApi("https://ui-avatars.com/api/?background=random&name=" + response.data.data.name);
+        setName(response.data.data.name);
+        setPhone(response.data.data.phone);
+        setAddress(response.data.data.address);
+
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
+
 
   return (
     <div>
@@ -30,7 +82,7 @@ function EditProfil() {
         <div className="container-avatar d-flex justify-content-center align-items-center">
           <label for="file-input">
             <div className="avatar-relative cursor-pointer">
-              <img src={avatarImg} alt="Avatar" className="avatar-edit" />
+              <img src={avatarImgApi} alt="Avatar" className="avatar-edit" />
               <div className="camera-absolute cursor-pointer">
                 <img src={cameraImg} alt="Camera" className="camera-edit" />
               </div>
