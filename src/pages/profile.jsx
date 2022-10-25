@@ -1,8 +1,11 @@
 import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
+
 import HeaderWithText from "@Components/Header/HeaderWithText";
 import MenuBar from "@Components/MenuBar";
 import "../assets/styles/profil.css";
-import avatarImg from "../assets/images/profil/avatar.png";
 import arrowProfilSmall from "../assets/icons/arrow-profil-small.png";
 import arrowProfilBig from "../assets/icons/arrow-profil-big.png";
 import vectorSyarat from "../assets/images/profil/vector-syarat.png";
@@ -10,9 +13,33 @@ import vectorPrivacy from "../assets/images/profil/vector-privacy.png";
 import vectorTentang from "../assets/images/profil/vector-tentang.png";
 
 function Profile() {
+
   function Logout() {
-    alert("kamu telah logout");
+    localStorage.removeItem("token");
+    window.location = "/login";
   }
+
+  const [profilData, setProfilData] = useState([]);
+  const [avatarImgApi, setAvatarImgApi] = useState("");
+
+
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    };
+
+    axios.get('http://108.137.148.110/api/v1/profile/user', config)
+      .then(function (response) {
+        setProfilData(response.data.data);
+        setAvatarImgApi("https://ui-avatars.com/api/?background=random&name=" + response.data.data.name);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
+
 
   return (
     <div>
@@ -20,10 +47,10 @@ function Profile() {
 
       <div className="d-flex align-items-center mx-3 mt-3">
         <div>
-          <img src={avatarImg} alt="avatar" className="avatar-image" />
+          <img src={avatarImgApi} alt="avatar" className="avatar-image" />
         </div>
         <div className="d-flex flex-column mx-3">
-          <div className="profil-name">Fulan</div>
+          <div className="profil-name">{profilData.name}</div>
           <div>
             <a href="/editprofile">
               <span className="edit-profil">Edit Profil</span>{" "}

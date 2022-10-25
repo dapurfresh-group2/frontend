@@ -30,7 +30,7 @@ export default function Register() {
 
         })
             .then(function (response) {
-                console.log(response);
+
                 Swal.fire({
                     icon: 'success',
                     title: 'Pendaftaran Berhasil',
