@@ -8,8 +8,9 @@ import "tippy.js/animations/scale.css";
 import PlusButtonText from "./PlusButtonText";
 import infoIcon from "@Assets/icons/info-icon.svg";
 import QuantityButton from "./QuantityButton";
+import toRupiahFormat from "@Utils/logic/toRupiahFormat";
 
-export default function ProductCard({ img }) {
+export default function ProductCard({ img, name, price, info, weight }) {
   const [quantity, setQuantity] = useState(0);
   const onClickMinHandler = () => {
     setQuantity(quantity - 1);
@@ -40,40 +41,22 @@ export default function ProductCard({ img }) {
                 marginBottom: "0px",
               }}
             >
-              Kangkung
+              {name}
             </h1>
-            <Tippy
-              maxWidth={185}
-              content="1 ikat kangkung setara dengan 500 gr"
-              placement="bottom-end"
-              theme="light"
-              trigger="click"
-              animation="fade"
-            >
-              <img style={{ cursor: "pointer" }} src={infoIcon} alt="info" />
-            </Tippy>
+            {info ? (
+              <Tippy
+                maxWidth={185}
+                content={info}
+                placement="bottom-end"
+                theme="light"
+                trigger="click"
+                animation="fade"
+              >
+                <img style={{ cursor: "pointer" }} src={infoIcon} alt="info" />
+              </Tippy>
+            ) : null}
           </div>
-          <div
-            className="rounded-pill mb-1"
-            style={{
-              backgroundColor: "rgba(255, 214, 0, 1)",
-              padding: "1px 5px",
-              width: "max-content",
-            }}
-          >
-            <p
-              className="text-danger my-auto"
-              style={{
-                fontSize: "10px",
-                fontWeight: "600",
-                color: "#444444",
-                marginBottom: "0px",
-              }}
-            >
-              10%
-            </p>
-          </div>
-          <div className="d-flex">
+          <div className="d-flex mt-3">
             <h2
               style={{
                 fontSize: "15px",
@@ -82,21 +65,8 @@ export default function ProductCard({ img }) {
                 marginBottom: "0px",
               }}
             >
-              Rp 4.680
+              {toRupiahFormat(price)}
             </h2>
-            <h3
-              className="ms-1"
-              style={{
-                fontSize: "13px",
-                fontWeight: "500",
-                color: "rgba(68, 68, 68, 0.5)",
-                marginTop: "1px",
-                marginBottom: "0px",
-                textDecoration: "line-through",
-              }}
-            >
-              Rp 5.200
-            </h3>
           </div>
           <div className="d-flex align-items-center mt-1">
             {quantity === 0 ? (
@@ -116,22 +86,11 @@ export default function ProductCard({ img }) {
                 marginBottom: "0px",
               }}
             >
-              x 1 ikat
+              x {weight}
             </p>
           </div>
         </div>
       </div>
-      <p
-        style={{
-          fontSize: "11px",
-          fontWeight: "400",
-          color: "rgba(239, 38, 54, 1)",
-          marginTop: "5px",
-          textAlign: "right",
-        }}
-      >
-        Promo! Maksimal: 3
-      </p>
     </div>
   );
 }
