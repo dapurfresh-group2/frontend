@@ -9,50 +9,13 @@ import line1 from "@Assets/images/loginregister/line-1.png";
 import line2 from "@Assets/images/loginregister/line-2.png";
 
 import Swal from "sweetalert2";
-import register from "../api/auth/register";
+import register from "@Api/auth/register";
 
 export default function Register() {
-<<<<<<< HEAD
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-=======
-    const [name, setName] = useState();
-    const [phone, setPhone] = useState();
-    const [username, setUsername] = useState();
-    const [password, setPassword] = useState();
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-
-        axios.post('http://108.137.148.110/api/v1/auth/register', {
-            name: name,
-            phone: phone,
-            username: username,
-            password: password,
-
-        })
-            .then(function (response) {
-
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Pendaftaran Berhasil',
-                    text: 'Silahkan masuk dengan menggunakan username dan password'
-                });
-
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-
-
-
-        setName("");
-        setPhone("");
-        setUsername("");
-        setPassword("");
->>>>>>> ce8cd3407579a72fdef2510afe8ad3b10d050a61
 
   const handleSubmit = async (event) => {
     event.preventDefault();
