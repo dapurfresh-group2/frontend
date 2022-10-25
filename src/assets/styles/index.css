@@ -77,6 +77,10 @@ button {
   transition: none !important;
 }
 
+.swal2-title {
+  font-size: 20px !important;
+}
+
 .swal2-actions {
   width: 100% !important;
   justify-content: flex-end !important;
