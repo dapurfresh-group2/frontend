@@ -1,27 +1,41 @@
 import React from "react";
 import { useState } from "react";
 import "../assets/styles/searchpage.css";
-import arrowButton from "../assets/icons/arrow.png";
-import iconSearch from "../assets/icons/ic-search.png";
-import ProductCard from "../components/ProductCard";
-import PencarianProduk from "../components/PencarianProduk";
-import kangkungImage from "@Assets/images/product/kangkung.png";
-import resetInputImg from "../assets/icons/reset-input.png";
+import arrowButton from "@Assets/icons/arrow.png";
+import iconSearch from "@Assets/icons/ic-search.png";
+import ProductCard from "@Components/ProductCard";
+import resetInputImg from "@Assets/icons/reset-input.png";
+import searchProduct from "@Api/auth/searchProduct";
+import NotFoundProduct from "@Components/NotFound/NotFoundProduct";
+import data from "@Data/favoriteProduct";
 
 function PageSearch() {
-  const [inputSearch, setInputSearch] = useState();
+  const [inputSearch, setInputSearch] = useState("");
+  const [products, setProducts] = useState([]);
 
-  function handleChange(event) {
+  const handleChange = async (event) => {
     setInputSearch(event.target.value);
-  }
+    const res = await searchProduct(event.target.value);
+    if (res.data?.data) {
+      setProducts(res.data.data);
+    } else if (res.response.data.message === "product not found") {
+      setProducts([]);
+    }
+  };
 
-  function testSearch() {
-    alert(inputSearch);
-  }
+  const onClickSearchProduct = async (name) => {
+    setInputSearch(name);
+    const res = await searchProduct(name);
+    if (res.data?.data) {
+      setProducts(res.data.data);
+    } else if (res.response.data.message === "product not found") {
+      setProducts([]);
+    }
+  };
 
-  function resetInput() {
+  const resetInput = () => {
     setInputSearch("");
-  }
+  };
 
   return (
     <div>
@@ -32,12 +46,13 @@ function PageSearch() {
           </a>
         </div>
         <div className="container-search d-flex align-items-center mx-2">
-          <div className="cursor-pointer ms-3 me-2" onClick={testSearch}>
+          <div className="cursor-pointer ms-3 me-2">
             <img src={iconSearch} alt="icon search" />
           </div>
 
           <div className="d-flex align-items-center">
             <input
+              id="search"
               type="text"
               className="input-search"
               placeholder="Cari sayur,bumbu dapur, lauk pauk..."
@@ -56,10 +71,39 @@ function PageSearch() {
 
       {inputSearch ? (
         <div className="px-3 mt-3">
-          <ProductCard img={kangkungImage} />
+          {products.length > 0 ? (
+            products.map((product) => (
+              <ProductCard
+                name={product.name}
+                price={product.price}
+                info={product.info}
+                weight={product.weight}
+                img={`http://108.137.148.110${product.image}`}
+              />
+            ))
+          ) : (
+            <NotFoundProduct />
+          )}
         </div>
       ) : (
-        <PencarianProduk />
+        <div>
+          <div className="pencarian-produk-terpopuler mx-3 mt-4 mb-3">
+            Pencarian Produk Terpopuler
+          </div>
+
+          <div className="d-flex flex-wrap mx-3">
+            {data.map((product) => (
+              <button
+                className="tag-produk-terpopuler px-3 py-2 mx-1 my-2"
+                onClick={() => {
+                  onClickSearchProduct(product);
+                }}
+              >
+                {product}
+              </button>
+            ))}
+          </div>
+        </div>
       )}
     </div>
   );

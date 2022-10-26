@@ -11,6 +11,7 @@ module.exports = {
       '@Api': path.resolve(__dirname, 'src/api'),
       '@Routes': path.resolve(__dirname, 'src/routes'),
       '@Utils': path.resolve(__dirname, 'src/utils'),
+      '@Data': path.resolve(__dirname, 'src/data'),
     }
   },
 };
