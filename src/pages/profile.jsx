@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import axios from "axios";
+import ApiProfile from "@Api/auth/apiProfile";
 
 import HeaderWithText from "@Components/Header/HeaderWithText";
 import MenuBar from "@Components/MenuBar";
@@ -25,19 +25,12 @@ function Profile() {
 
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    const config = {
-      headers: { Authorization: `Bearer ${token}` }
+    const fetchData = async () => {
+      const profileRes = await ApiProfile();
+      setProfilData(profileRes.data.data);
+      setAvatarImgApi("https://ui-avatars.com/api/?background=random&name=" + profileRes.data.data.name);
     };
-
-    axios.get('http://108.137.148.110/api/v1/profile/user', config)
-      .then(function (response) {
-        setProfilData(response.data.data);
-        setAvatarImgApi("https://ui-avatars.com/api/?background=random&name=" + response.data.data.name);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    fetchData();
   }, []);
 
 
