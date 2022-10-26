@@ -17,7 +17,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
 
   const getProduct = async () => {
-    
+
     const res = await axios.get("http://108.137.148.110/api/v1/products", {
       headers: {
         Authorization:
@@ -34,6 +34,7 @@ export default function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const response = await login(username, password);
+    console.log(response);
     if (response.data?.message === "success") {
       localStorage.setItem("token", response.data.token);
       window.location = "/";

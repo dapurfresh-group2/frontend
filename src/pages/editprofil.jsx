@@ -2,7 +2,8 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import axios from "axios";
+import apiPutProfile from "@Api/auth/apiPutProfile";
+import ApiProfile from "@Api/auth/apiProfile";
 import Swal from 'sweetalert2';
 
 import "@Assets/styles/profil.css";
@@ -20,58 +21,32 @@ function EditProfil() {
 
 
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const token = localStorage.getItem("token");
-    const config = {
-      headers: { Authorization: `Bearer ${token}` }
-    };
+    const editProfileRes = await apiPutProfile(name, phone, address);
+    if (editProfileRes.data.message === "success") {
 
-    axios.put('http://108.137.148.110/api/v1/profile/edit', {
-      name: name,
-      phone: phone,
-      address: address,
-      image: null
-    }, config)
-      .then(function (response) {
-
-        if (response.data.message === "success") {
-
-          Swal.fire({
-            icon: 'success',
-            title: 'Berhasil',
-            text: 'Profil berhasil disimpan'
-          });
-        }
-
-      })
-      .catch(function (error) {
-        console.log(error);
+      Swal.fire({
+        icon: 'success',
+        title: 'Berhasil',
+        text: 'Profil berhasil disimpan',
+        showConfirmButton: false,
       });
+    }
+
+
   };
 
-
-
-
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    const config = {
-      headers: { Authorization: `Bearer ${token}` }
+    const fetchData = async () => {
+      const profileRes = await ApiProfile();
+      setAvatarImgApi("https://ui-avatars.com/api/?background=random&name=" + profileRes.data.data.name);
+      setName(profileRes.data.data.name);
+      setPhone(profileRes.data.data.phone);
+      setAddress(profileRes.data.data.address);
     };
-
-    axios.get('http://108.137.148.110/api/v1/profile/user', config)
-      .then(function (response) {
-        setAvatarImgApi("https://ui-avatars.com/api/?background=random&name=" + response.data.data.name);
-        setName(response.data.data.name);
-        setPhone(response.data.data.phone);
-        setAddress(response.data.data.address);
-
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    fetchData();
   }, []);
-
 
   return (
     <div>

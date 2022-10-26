@@ -20,8 +20,7 @@ export default function Register() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const res = await register(name, phone, username, password);
-    console.log(res);
-    if (res.data?.message === "success") {
+    if (res.data?.message === "register success") {
       Swal.fire({
         icon: "success",
         title: "Pendaftaran Berhasil",
