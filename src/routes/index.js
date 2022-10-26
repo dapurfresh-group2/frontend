@@ -10,12 +10,12 @@ import EditProfil from "@Pages/editprofil";
 import ProdukTerpopuler from "@Pages/produkterpopuler";
 import ListKategori from "@Pages/listkategori";
 import Checkout from "@Pages/checkout";
-
+import middleware from "../middleware";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: middleware(<Home />),
   },
   {
     path: "/login",
@@ -27,35 +27,35 @@ const router = createBrowserRouter([
   },
   {
     path: "/search",
-    element: <PageSearch />,
+    element: middleware(<PageSearch />),
   },
   {
     path: "/historyorder",
-    element: <HistoryOrder />,
+    element: middleware(<HistoryOrder />),
   },
   {
     path: "/historyorder/:id",
-    element: <HistoryOrderDetail />,
+    element: middleware(<HistoryOrderDetail />),
   },
   {
     path: "/profile",
-    element: <Profile />,
+    element: middleware(<Profile />),
   },
   {
     path: "/editprofile",
-    element: <EditProfil />,
+    element: middleware(<EditProfil />),
   },
   {
     path: "/popularproducts",
-    element: <ProdukTerpopuler />,
+    element: middleware(<ProdukTerpopuler />),
   },
   {
     path: "/categories",
-    element: <ListKategori />,
+    element: middleware(<ListKategori />),
   },
   {
     path: "/checkout",
-    element: <Checkout />,
+    element: middleware(<Checkout />),
   },
 ]);
 
