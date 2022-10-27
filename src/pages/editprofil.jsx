@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import apiPutProfile from "@Api/auth/apiPutProfile";
 import ApiProfile from "@Api/auth/apiProfile";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 import "@Assets/styles/profil.css";
 import InputEditProfil from "@Components/Profil/inputeditprofil";
@@ -12,40 +12,41 @@ import HeaderTextWithBackButton from "@Components/Header/HeaderWithBackButton";
 import cameraImg from "@Assets/images/profil/camera.png";
 
 function EditProfil() {
-  const [name, setName] = useState();
-  const [phone, setPhone] = useState();
-  const [address, setAddress] = useState();
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [avatarImgApi, setAvatarImgApi] = useState("");
-
-
-
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+  const [selectedFile, setSelectedFile] = useState("");
+  const [avatarImg, setAvatarImg] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const editProfileRes = await apiPutProfile(name, phone, address);
+    const formData = new FormData();
+    formData.append("image", selectedFile, selectedFile.name);
+    const editProfileRes = await apiPutProfile(name, phone, address, formData);
     if (editProfileRes.data.message === "success") {
-
       Swal.fire({
-        icon: 'success',
-        title: 'Berhasil',
-        text: 'Profil berhasil disimpan',
+        icon: "success",
+        title: "Berhasil",
+        text: "Profil berhasil disimpan",
         showConfirmButton: false,
+        width: "310px",
       });
     }
-
-
   };
 
   useEffect(() => {
-    const fetchData = async () => {
+    const getUserProfile = async () => {
       const profileRes = await ApiProfile();
-      setAvatarImgApi("https://ui-avatars.com/api/?background=random&name=" + profileRes.data.data.name);
+      setAvatarImg(
+        profileRes.data.data.image
+          ? profileRes.data.data.image
+          : `https://ui-avatars.com/api/?background=random&name=${profileRes.data.data.name}`
+      );
       setName(profileRes.data.data.name);
       setPhone(profileRes.data.data.phone);
       setAddress(profileRes.data.data.address);
     };
-    fetchData();
+    getUserProfile();
   }, []);
 
   return (
@@ -57,7 +58,7 @@ function EditProfil() {
         <div className="container-avatar d-flex justify-content-center align-items-center">
           <label for="file-input">
             <div className="avatar-relative cursor-pointer">
-              <img src={avatarImgApi} alt="Avatar" className="avatar-edit" />
+              <img src={avatarImg} alt="Avatar" className="avatar-edit" />
               <div className="camera-absolute cursor-pointer">
                 <img src={cameraImg} alt="Camera" className="camera-edit" />
               </div>
@@ -65,8 +66,12 @@ function EditProfil() {
             <input
               id="file-input"
               type="file"
-              // value={selectedFile}
-              onChange={(event) => setSelectedFile(event.target.files[0])}
+              accept="jpg/jpeg"
+              onChange={(event) => {
+                setAvatarImg(URL.createObjectURL(event.target.files[0]));
+                setSelectedFile(event.target.files[0]);
+                console.log(event.target.files[0]);
+              }}
             />
           </label>
         </div>
