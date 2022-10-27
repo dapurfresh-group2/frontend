@@ -1,35 +1,43 @@
 import React from "react";
 import { useState } from "react";
 import "../assets/styles/searchpage.css";
-import arrowButton from "@Assets/icons/arrow.png";
-import iconSearch from "@Assets/icons/ic-search.png";
+import arrowButton from "@Assets/icons/arrow-icon.svg";
+import iconSearch from "@Assets/icons/search-icon.svg";
 import ProductCard from "@Components/ProductCard";
-import resetInputImg from "@Assets/icons/reset-input.png";
+import resetInputImg from "@Assets/icons/cancel-icon.svg";
 import searchProduct from "@Api/auth/searchProduct";
 import NotFoundProduct from "@Components/NotFound/NotFoundProduct";
 import data from "@Data/favoriteProduct";
+import SkeletonProductList from "@Components/SkeletonLoading/SkeletonProductList";
 
 function PageSearch() {
+  const [isLoading, setIsLoading] = useState(false);
   const [inputSearch, setInputSearch] = useState("");
   const [products, setProducts] = useState([]);
 
   const handleChange = async (event) => {
+    setIsLoading(true);
     setInputSearch(event.target.value);
     const res = await searchProduct(event.target.value);
     if (res.data?.data) {
       setProducts(res.data.data);
+      setIsLoading(false);
     } else if (res.response.data.message === "product not found") {
       setProducts([]);
+      setIsLoading(false);
     }
   };
 
   const onClickSearchProduct = async (name) => {
+    setIsLoading(true);
     setInputSearch(name);
     const res = await searchProduct(name);
     if (res.data?.data) {
       setProducts(res.data.data);
+      setIsLoading(false);
     } else if (res.response.data.message === "product not found") {
       setProducts([]);
+      setIsLoading(false);
     }
   };
 
@@ -81,6 +89,8 @@ function PageSearch() {
                 img={`http://108.137.148.110${product.image}`}
               />
             ))
+          ) : isLoading ? (
+            <SkeletonProductList />
           ) : (
             <NotFoundProduct />
           )}
