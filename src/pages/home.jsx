@@ -7,6 +7,8 @@ import MenuBar from "@Components/MenuBar";
 import ButtonCart from "@Components/Button/ButtonCart";
 import getAllCategories from "@Api/auth/getAllCategories";
 import getAllProducts from "@Api/auth/getAllProducts";
+import SkeletonCategory from "@Components/SkeletonLoading/SkeletonCategory";
+import SkeletonProductList from "@Components/SkeletonLoading/SkeletonProductList";
 
 export default function Home() {
   const [categoriesData, setCategoriesData] = useState([]);
@@ -29,7 +31,12 @@ export default function Home() {
     <div>
       <Header />
       <div className="mx-3">
-        <Category data={categoriesData} />
+        {categoriesData.length > 0 ? (
+          <Category data={categoriesData} />
+        ) : (
+          <SkeletonCategory />
+        )}
+
         <div className="d-flex justify-content-between align-content-center mt-5">
           <h1
             style={{
@@ -52,20 +59,24 @@ export default function Home() {
             Lihat Semua
           </a>
         </div>
-        <div style={{
-          marginBottom: "75px"
-        }}>
-          {productsData.length > 0
-            ? productsData.map((product) => (
-                <ProductCard
-                  name={product.name}
-                  price={product.price}
-                  info={product.info}
-                  weight={product.weight}
-                  img={`http://108.137.148.110${product.image}`}
-                />
-              ))
-            : null}
+        <div
+          style={{
+            marginBottom: "75px",
+          }}
+        >
+          {productsData.length > 0 ? (
+            productsData.map((product) => (
+              <ProductCard
+                name={product.name}
+                price={product.price}
+                info={product.info}
+                weight={product.weight}
+                img={`http://108.137.148.110${product.image}`}
+              />
+            ))
+          ) : (
+            <SkeletonProductList count={5} />
+          )}
         </div>
       </div>
 
