@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import "../assets/styles/searchpage.css";
+import "@Assets/styles/searchpage.css";
 import arrowButton from "@Assets/icons/arrow-icon.svg";
 import iconSearch from "@Assets/icons/search-icon.svg";
 import ProductCard from "@Components/ProductCard";
@@ -86,7 +86,7 @@ function PageSearch() {
                 price={product.price}
                 info={product.info}
                 weight={product.weight}
-                img={`http://108.137.148.110${product.image}`}
+                img={`https://108.137.148.110${product.image}`}
               />
             ))
           ) : isLoading ? (
