@@ -5,8 +5,8 @@ import Category from "@Components/Category";
 import ProductCard from "@Components/ProductCard";
 import MenuBar from "@Components/MenuBar";
 import ButtonCart from "@Components/Button/ButtonCart";
-import getAllCategories from "@Api/auth/getAllCategories";
-import getAllProducts from "@Api/auth/getAllProducts";
+import getAllProducts from "@Api/product/getAllProducts";
+import getAllCategories from "@Api/product/getAllCategories";
 import SkeletonCategory from "@Components/SkeletonLoading/SkeletonCategory";
 import SkeletonProductList from "@Components/SkeletonLoading/SkeletonProductList";
 
@@ -71,7 +71,7 @@ export default function Home() {
                 price={product.price}
                 info={product.info}
                 weight={product.weight}
-                img={`https://108.137.148.110${product.image}`}
+                img={`http://108.137.148.110${product.image}`}
               />
             ))
           ) : (

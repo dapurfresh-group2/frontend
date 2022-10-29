@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 
-export default function middleware(page) {
+export default function checkLoggedMiddleware(page) {
   try {
     const token = localStorage.getItem("token");
     if (!token) {

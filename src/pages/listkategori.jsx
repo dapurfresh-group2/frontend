@@ -8,7 +8,6 @@ import kangkungImage from "@Assets/images/product/kangkung.png";
 import arrowButton from "@Assets/icons/arrow-icon.svg";
 import SearchCategory from "@Components/Search/SearchCategory";
 
-
 function ListKategori() {
   const [namaKategori, setNamaKategori] = useState("bumbu");
 
@@ -134,19 +133,31 @@ function ListKategori() {
       <div className="extra-blank"></div>
 
       <div className="px-3 mt-3">
-        <ProductCard img={kangkungImage} />
+        <ProductCard
+          img={kangkungImage}
+          name="Kangkung"
+          price="Rp20.000"
+          info="Ini info"
+          weight="1 ikat"
+        />
       </div>
       <div className="px-3 mt-3">
-        <ProductCard img={kangkungImage} />
+        <ProductCard
+          img={kangkungImage}
+          name="Kangkung"
+          price="Rp20.000"
+          info="Ini info"
+          weight="1 ikat"
+        />
       </div>
       <div className="px-3 mt-3">
-        <ProductCard img={kangkungImage} />
-      </div>
-      <div className="px-3 mt-3">
-        <ProductCard img={kangkungImage} />
-      </div>
-      <div className="px-3 mt-3">
-        <ProductCard img={kangkungImage} />
+        <ProductCard
+          img={kangkungImage}
+          name="Kangkung"
+          price="Rp20.000"
+          info="Ini info"
+          weight="1 ikat"
+        />
       </div>
     </div>
   );

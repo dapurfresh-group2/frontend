@@ -1,5 +1,5 @@
 // Ubah ke styles folder
-import "../assets/styles/loginRegister.css";
+import "@Assets/styles/loginRegister.css";
 import React from "react";
 import { useState } from "react";
 

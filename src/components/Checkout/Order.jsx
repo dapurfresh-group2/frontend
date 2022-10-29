@@ -40,7 +40,13 @@ export default function Order() {
         }}
       />
       <div className="px-3 py-2">
-        <ProductCard img={kangkungImage} />
+        <ProductCard
+          img={kangkungImage}
+          name="Kangkung"
+          price="Rp20.000"
+          info="Ini info"
+          weight="1 ikat"
+        />
       </div>
     </div>
   );

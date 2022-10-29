@@ -2,8 +2,8 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import apiPutProfile from "@Api/auth/apiPutProfile";
-import ApiProfile from "@Api/auth/apiProfile";
+import putProfile from "@Api/profile/putProfile";
+import getProfile from "@Api/profile/getProfile";
 import Swal from "sweetalert2";
 
 import "@Assets/styles/profil.css";
@@ -22,7 +22,7 @@ function EditProfil() {
     event.preventDefault();
     const formData = new FormData();
     formData.append("image", selectedFile, selectedFile.name);
-    const editProfileRes = await apiPutProfile(name, phone, address, formData);
+    const editProfileRes = await putProfile(name, phone, address, formData);
     if (editProfileRes.data.message === "success") {
       Swal.fire({
         icon: "success",
@@ -36,7 +36,7 @@ function EditProfil() {
 
   useEffect(() => {
     const getUserProfile = async () => {
-      const profileRes = await ApiProfile();
+      const profileRes = await getProfile();
       setAvatarImg(
         profileRes.data.data.image
           ? profileRes.data.data.image
@@ -103,6 +103,7 @@ function EditProfil() {
             placeholder="Address"
             value={address}
             onChange={(event) => {
+              console.log(event.target.value);
               setAddress(event.target.value);
             }}
           />

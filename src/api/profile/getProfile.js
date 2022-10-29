@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const getAllCategories = async () => {
+const getProfile = async () => {
   try {
-    const res = await axios.get("https://108.137.148.110/api/v1/categories", {
+    const res = await axios.get("http://108.137.148.110/api/v1/profile/user", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
@@ -13,4 +13,4 @@ const getAllCategories = async () => {
   }
 };
 
-export default getAllCategories;
+export default getProfile;

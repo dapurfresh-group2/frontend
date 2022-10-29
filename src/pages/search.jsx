@@ -5,7 +5,7 @@ import arrowButton from "@Assets/icons/arrow-icon.svg";
 import iconSearch from "@Assets/icons/search-icon.svg";
 import ProductCard from "@Components/ProductCard";
 import resetInputImg from "@Assets/icons/cancel-icon.svg";
-import searchProduct from "@Api/auth/searchProduct";
+import searchProduct from "@Api/product/searchProduct";
 import NotFoundProduct from "@Components/NotFound/NotFoundProduct";
 import data from "@Data/favoriteProduct";
 import SkeletonProductList from "@Components/SkeletonLoading/SkeletonProductList";
@@ -86,7 +86,7 @@ function PageSearch() {
                 price={product.price}
                 info={product.info}
                 weight={product.weight}
-                img={`https://108.137.148.110${product.image}`}
+                img={`http://108.137.148.110${product.image}`}
               />
             ))
           ) : isLoading ? (

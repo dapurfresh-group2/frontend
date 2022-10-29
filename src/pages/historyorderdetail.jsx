@@ -6,7 +6,7 @@ import DeliveryDetail from "@Components/HistoryDetail/DeliveryDetail";
 import OrderDetail from "@Components/HistoryDetail/OrderDetail";
 import PaymentDetail from "@Components/HistoryDetail/PaymentDetail";
 import Button from "@Components/HistoryDetail/Button";
-import deleteModal from "../utils/interface/deleteModal";
+import deleteModal from "@Utils/interface/deleteModal";
 
 export default function HistoryOrderDetail() {
   // const { id } = useParams();

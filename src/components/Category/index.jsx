@@ -31,7 +31,7 @@ export default function Category({ data }) {
                       position: "relative",
                       borderRadius: "5px",
                       cursor: "pointer",
-                      backgroundImage: `linear-gradient(to bottom, rgba(196, 196, 196, 0), rgba(0, 0, 0, 0.6)), url(https://108.137.148.110${category.image})`,
+                      backgroundImage: `linear-gradient(to bottom, rgba(196, 196, 196, 0), rgba(0, 0, 0, 0.6)), url(http://108.137.148.110${category.image})`,
                       backgroundSize: "100px",
                     }}
                   >

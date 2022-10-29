@@ -1,16 +1,16 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import ApiProfile from "@Api/auth/apiProfile";
 
 import HeaderWithText from "@Components/Header/HeaderWithText";
 import MenuBar from "@Components/MenuBar";
-import "../assets/styles/profil.css";
-import arrowProfilSmall from "../assets/icons/arrow-profil-small.png";
-import arrowProfilBig from "../assets/icons/arrow-profil-big.png";
-import vectorSyarat from "../assets/images/profil/vector-syarat.png";
-import vectorPrivacy from "../assets/images/profil/vector-privacy.png";
-import vectorTentang from "../assets/images/profil/vector-tentang.png";
+import "@Assets/styles/profil.css";
+import arrowProfilSmall from "@Assets/icons/arrow-profil-small.png";
+import arrowProfilBig from "@Assets/icons/arrow-profil-big.png";
+import vectorSyarat from "@Assets/images/profil/vector-syarat.png";
+import vectorPrivacy from "@Assets/images/profil/vector-privacy.png";
+import vectorTentang from "@Assets/images/profil/vector-tentang.png";
+import getProfile from "@Api/profile/getProfile";
 
 function Profile() {
 
@@ -26,7 +26,7 @@ function Profile() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const profileRes = await ApiProfile();
+      const profileRes = await getProfile();
       setProfilData(profileRes.data.data);
       setAvatarImgApi("https://ui-avatars.com/api/?background=random&name=" + profileRes.data.data.name);
     };

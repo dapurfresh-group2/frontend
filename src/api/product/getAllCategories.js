@@ -1,9 +1,8 @@
 import axios from "axios";
 
-const searchProduct = async (name) => {
+const getAllCategories = async () => {
   try {
-    console.log(name);
-    const res = await axios.get(`https://108.137.148.110/api/v1/products/${name}`, {
+    const res = await axios.get("http://108.137.148.110/api/v1/categories", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
@@ -14,4 +13,4 @@ const searchProduct = async (name) => {
   }
 };
 
-export default searchProduct;
+export default getAllCategories;
