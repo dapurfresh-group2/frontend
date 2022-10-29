@@ -35,6 +35,7 @@ function ListKategori() {
               drag: "free",
               autoWidth: true,
               pagination: false,
+              arrows: true,
             }}
             aria-label="My Favorite Images"
           >

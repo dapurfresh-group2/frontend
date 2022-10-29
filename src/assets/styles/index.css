@@ -104,7 +104,20 @@ button {
 
 /* Custom splide.js */
 .splide__arrow {
-  visibility: hidden;
+  background: #fff !important;
+  transform: translateY(-65%) !important;
+}
+
+.splide__arrow:disabled{
+  opacity: 0 !important;
+}
+
+.splide__arrow--next {
+  right: -1em !important;
+}
+
+.splide__arrow--prev {
+  left: -1em !important;
 }
 
 .splide__pagination__page {

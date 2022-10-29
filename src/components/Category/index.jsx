@@ -17,6 +17,7 @@ export default function Category({ data }) {
           drag: "free",
           height: "100px",
           autoWidth: true,
+          arrows: false,
         }}
         aria-label="My Favorite Images"
       >

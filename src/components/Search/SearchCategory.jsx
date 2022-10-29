@@ -3,7 +3,6 @@ import searchIcon from "@Assets/icons/search-icon.svg";
 
 export default function SearchCategory() {
   return (
-    <div>
       <div
         className="d-flex w-100 rounded-pill px-3 py-2"
         style={{
@@ -24,6 +23,5 @@ export default function SearchCategory() {
           }}
         />
       </div>
-    </div>
   );
 }
