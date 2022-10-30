@@ -5,10 +5,12 @@ import cartIcon from "@Assets/icons/cart-icon.svg";
 export default function ButtonCart({ totalBill, quantity, bottom }) {
   return (
     <div
-      className="fixed-bottom px-2"
+      id="floatingCart"
+      className="fixed-bottom px-2 floatingCart"
       style={{
         bottom: bottom || "20px",
       }}
+      
     >
       <a href="/checkout">
         <button

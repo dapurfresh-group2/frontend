@@ -60,6 +60,14 @@ a:hover {
   color: inherit;
 }
 
+.floatingCart[open="true"] {
+  animation: fade-in 300ms forwards;
+}
+
+.floatingCart[open="false"] {
+  animation: fade-out 300ms forwards;
+}
+
 button {
   border: 0px;
 }
@@ -108,7 +116,7 @@ button {
   transform: translateY(-65%) !important;
 }
 
-.splide__arrow:disabled{
+.splide__arrow:disabled {
   opacity: 0 !important;
 }
 
@@ -142,4 +150,22 @@ button {
 
 .hover-underline:hover {
   text-decoration: underline;
+}
+
+@keyframes fade-in {
+  0% {
+    transform: translateY(30%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes fade-out {
+  100% {
+    opacity: 0;
+  }
+  0% {
+    opacity: 1;
+  }
 }
