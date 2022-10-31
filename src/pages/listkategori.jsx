@@ -1,22 +1,57 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import "@Assets/styles/listkategori.css";
 import ProductCard from "@Components/ProductCard";
-import kangkungImage from "@Assets/images/product/kangkung.png";
 import arrowButton from "@Assets/icons/arrow-icon.svg";
 import SearchCategory from "@Components/Search/SearchCategory";
+import getProductsByCategory from "@Api/product/getProductsByCategory";
+import getAllCategories from "@Api/product/getAllCategories";
+import NotFoundProduct from "@Components/NotFound/NotFoundProduct";
+import SkeletonProductList from "@Components/SkeletonLoading/SkeletonProductList";
 
 function ListKategori() {
-  const [namaKategori, setNamaKategori] = useState("bumbu");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [activeCategoryId, setActiveCategoryId] = useState(1);
+  const [categories, setCategories] = useState([]);
+  const [productsData, setProductsData] = useState([]);
+  const [filteredProductsData, setFilteredProductsData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const styleRegular = "menu-kategori cursor-pointer pb-2";
   const styleActive = "menu-kategori-active cursor-pointer pb-2";
 
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      // Get query parameters id
+      const searchQueryId = searchParams.get("id");
+
+      // Fetch products data
+      const productsRes = await getProductsByCategory(
+        searchQueryId || activeCategoryId
+      );
+      setProductsData(productsRes.data.data);
+      setFilteredProductsData(productsRes.data.data);
+      setActiveCategoryId(searchQueryId || 1);
+      setIsLoading(false);
+
+      // Fetch categories data
+      const categoriesRes = await getAllCategories();
+      setCategories(categoriesRes.data.data);
+    };
+    fetchData();
+  }, [window.location.search]);
+
   return (
     <div>
-      <div className="header-list-kategori">
+      <div
+        className="header-list-kategori"
+        style={{
+          zIndex: 99,
+        }}
+      >
         <div className="d-flex align-items-center align-content-center mx-2 my-3">
           <div>
             <a href="/">
@@ -24,7 +59,15 @@ function ListKategori() {
             </a>
           </div>
           <div className="ms-2 w-100">
-            <SearchCategory />
+            <SearchCategory
+              onChange={(e) => {
+                setFilteredProductsData(
+                  productsData.filter((product) =>
+                    product.name.toLowerCase().includes(e.target.value)
+                  )
+                );
+              }}
+            />
           </div>
         </div>
 
@@ -39,94 +82,21 @@ function ListKategori() {
             }}
             aria-label="My Favorite Images"
           >
-            <SplideSlide>
-              <div
-                className={
-                  namaKategori === "bumbu" ? styleActive : styleRegular
-                }
-                onClick={() => {
-                  setNamaKategori("bumbu");
-                }}
-              >
-                Bumbu
-              </div>
-            </SplideSlide>
-
-            <SplideSlide>
-              <div
-                className={
-                  namaKategori === "sayur" ? styleActive : styleRegular
-                }
-                onClick={() => {
-                  setNamaKategori("sayur");
-                }}
-              >
-                Sayur
-              </div>
-            </SplideSlide>
-
-            <SplideSlide>
-              <div
-                className={
-                  namaKategori === "kacang" ? styleActive : styleRegular
-                }
-                onClick={() => {
-                  setNamaKategori("kacang");
-                }}
-              >
-                Kacang
-              </div>
-            </SplideSlide>
-
-            <SplideSlide>
-              <div
-                className={
-                  namaKategori === "sembako" ? styleActive : styleRegular
-                }
-                onClick={() => {
-                  setNamaKategori("sembako");
-                }}
-              >
-                Sembako
-              </div>
-            </SplideSlide>
-
-            <SplideSlide>
-              <div
-                className={namaKategori === "buah" ? styleActive : styleRegular}
-                onClick={() => {
-                  setNamaKategori("buah");
-                }}
-              >
-                Buah
-              </div>
-            </SplideSlide>
-
-            <SplideSlide>
-              <div
-                className={
-                  namaKategori === "daging" ? styleActive : styleRegular
-                }
-                onClick={() => {
-                  setNamaKategori("daging");
-                }}
-              >
-                Daging
-              </div>
-            </SplideSlide>
-
-            <SplideSlide>
-              <div
-                className={
-                  namaKategori === "lainnya" ? styleActive : styleRegular
-                }
-                onClick={() => {
-                  setNamaKategori("lainnya");
-                }}
-              >
-                Lainnya
-              </div>
-            </SplideSlide>
+            {categories.map((category) => (
+              <SplideSlide key={category.id}>
+                <div
+                  className={
+                    activeCategoryId == category.id ? styleActive : styleRegular
+                  }
+                  onClick={() => {
+                    setSearchParams({ id: category.id });
+                    setActiveCategoryId(category.id);
+                  }}
+                >
+                  {category.name}
+                </div>
+              </SplideSlide>
+            ))}
           </Splide>
         </div>
       </div>
@@ -134,31 +104,23 @@ function ListKategori() {
       <div className="extra-blank"></div>
 
       <div className="px-3 mt-3">
-        <ProductCard
-          img={kangkungImage}
-          name="Kangkung"
-          price="Rp20.000"
-          info="Ini info"
-          weight="1 ikat"
-        />
-      </div>
-      <div className="px-3 mt-3">
-        <ProductCard
-          img={kangkungImage}
-          name="Kangkung"
-          price="Rp20.000"
-          info="Ini info"
-          weight="1 ikat"
-        />
-      </div>
-      <div className="px-3 mt-3">
-        <ProductCard
-          img={kangkungImage}
-          name="Kangkung"
-          price="Rp20.000"
-          info="Ini info"
-          weight="1 ikat"
-        />
+        {!isLoading ? (
+          filteredProductsData.length > 0 ? (
+            filteredProductsData.map((product) => (
+              <ProductCard
+                name={product.name}
+                price={product.price}
+                info={product.info}
+                weight={product.weight}
+                img={`http://108.137.148.110${product.image}`}
+              />
+            ))
+          ) : (
+            <NotFoundProduct />
+          )
+        ) : (
+          <SkeletonProductList />
+        )}
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import searchIcon from "@Assets/icons/search-icon.svg";
 
-export default function SearchCategory() {
+export default function SearchCategory({value, onChange}) {
   return (
       <div
         className="d-flex w-100 rounded-pill px-3 py-2"
@@ -13,6 +13,7 @@ export default function SearchCategory() {
         <input
           className="w-100"
           placeholder="Cari sayur, bumbu dapur, lauk pauk..."
+          onChange={onChange}
           style={{
             fontSize: "12px",
             fontWeight: "500",
