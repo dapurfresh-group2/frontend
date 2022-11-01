@@ -28,7 +28,9 @@ function Profile() {
     const fetchData = async () => {
       const profileRes = await getProfile();
       setProfilData(profileRes.data.data);
-      setAvatarImgApi("https://ui-avatars.com/api/?background=random&name=" + profileRes.data.data.name);
+      setAvatarImgApi(profileRes.data.data.image
+        ? "http://108.137.148.110" + profileRes.data.data.image
+        : `https://ui-avatars.com/api/?background=random&name=${profileRes.data.data.name}`);
     };
     fetchData();
   }, []);

@@ -15,22 +15,44 @@ function EditProfil() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
-  const [selectedFile, setSelectedFile] = useState("");
+  const [selectedFile, setSelectedFile] = useState();
   const [avatarImg, setAvatarImg] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const formData = new FormData();
-    formData.append("image", selectedFile, selectedFile.name);
-    const editProfileRes = await putProfile(name, phone, address, formData);
-    if (editProfileRes.data.message === "success") {
-      Swal.fire({
-        icon: "success",
-        title: "Berhasil",
-        text: "Profil berhasil disimpan",
-        showConfirmButton: false,
-        width: "310px",
-      });
+    if (selectedFile) {
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('phone', phone);
+      formData.append('address', address);
+      formData.append('file', selectedFile);
+      const editProfileRes = await putProfile(formData);
+
+      if (editProfileRes.data.message === "success") {
+        Swal.fire({
+          icon: "success",
+          title: "Berhasil",
+          text: "Profil berhasil disimpan",
+          showConfirmButton: false,
+          width: "310px",
+        });
+      }
+    } else {
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('phone', phone);
+      formData.append('address', address);
+      const editProfileRes = await putProfile(formData);
+
+      if (editProfileRes.data.message === "success") {
+        Swal.fire({
+          icon: "success",
+          title: "Berhasil",
+          text: "Profil berhasil disimpan",
+          showConfirmButton: false,
+          width: "310px",
+        });
+      }
     }
   };
 
@@ -39,7 +61,7 @@ function EditProfil() {
       const profileRes = await getProfile();
       setAvatarImg(
         profileRes.data.data.image
-          ? profileRes.data.data.image
+          ? "http://108.137.148.110" + profileRes.data.data.image
           : `https://ui-avatars.com/api/?background=random&name=${profileRes.data.data.name}`
       );
       setName(profileRes.data.data.name);
@@ -70,7 +92,6 @@ function EditProfil() {
               onChange={(event) => {
                 setAvatarImg(URL.createObjectURL(event.target.files[0]));
                 setSelectedFile(event.target.files[0]);
-                console.log(event.target.files[0]);
               }}
             />
           </label>
@@ -103,7 +124,6 @@ function EditProfil() {
             placeholder="Address"
             value={address}
             onChange={(event) => {
-              console.log(event.target.value);
               setAddress(event.target.value);
             }}
           />
