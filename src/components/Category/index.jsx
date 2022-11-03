@@ -24,7 +24,7 @@ export default function Category({ data }) {
         {data.length > 0
           ? data.map((category) => (
               <SplideSlide key={category.id}>
-                <a href="/categories">
+                <a href={`/categories?id=${category.id}`}>
                   <div
                     style={{
                       width: "100px",

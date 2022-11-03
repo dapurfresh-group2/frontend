@@ -13,6 +13,7 @@ module.exports = {
       '@Utils': path.resolve(__dirname, 'src/utils'),
       '@Data': path.resolve(__dirname, 'src/data'),
       '@Middleware': path.resolve(__dirname, 'src/middleware'),
+      '@Redux': path.resolve(__dirname, 'src/redux'),
     }
   },
 };

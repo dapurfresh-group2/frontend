@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "@Redux/cartSlice";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css"; // optional
 import "tippy.js/themes/light.css";
@@ -10,7 +12,9 @@ import infoIcon from "@Assets/icons/info-icon.svg";
 import QuantityButton from "./QuantityButton";
 import toRupiahFormat from "@Utils/logic/toRupiahFormat";
 
-export default function ProductCard({ img, name, price, info, weight }) {
+export default function ProductCard({ id, img, name, price, info, weight }) {
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
   const [quantity, setQuantity] = useState(0);
   const onClickMinHandler = () => {
     setQuantity(quantity - 1);
@@ -18,6 +22,12 @@ export default function ProductCard({ img, name, price, info, weight }) {
   const onClickPlusHandler = () => {
     setQuantity(quantity + 1);
   };
+
+  const getProductQuantity = () => {
+    const filteredProduct = cart.filter((product) => product.id === id);
+    return filteredProduct.quantity || 0;
+  };
+
   return (
     <div
       className="mb-3 p-3 rounded"
@@ -69,8 +79,12 @@ export default function ProductCard({ img, name, price, info, weight }) {
             </h2>
           </div>
           <div className="d-flex align-items-center mt-1">
-            {quantity === 0 ? (
-              <PlusButtonText onClickPlusHandler={onClickPlusHandler} />
+            {getProductQuantity() === 0 ? (
+              <PlusButtonText
+                onClickPlusHandler={() => {
+                  dispatch(addToCart({ id, quantity }));
+                }}
+              />
             ) : (
               <QuantityButton
                 quantity={quantity}

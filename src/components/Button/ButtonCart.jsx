@@ -1,8 +1,18 @@
 import React from "react";
 import lineIcon from "@Assets/icons/line.svg";
 import cartIcon from "@Assets/icons/cart-icon.svg";
+import { useEffect } from "react";
+import getActiveCart from "@Api/cart/getActiveCart";
 
 export default function ButtonCart({ totalBill, quantity, bottom }) {
+  useEffect(() => {
+    const fetch = async () => {
+      const res = await getActiveCart();
+      console.log(res);
+    };
+    fetch();
+  }, []);
+
   return (
     <div
       id="floatingCart"
@@ -10,7 +20,6 @@ export default function ButtonCart({ totalBill, quantity, bottom }) {
       style={{
         bottom: bottom || "20px",
       }}
-      
     >
       <a href="/checkout">
         <button
