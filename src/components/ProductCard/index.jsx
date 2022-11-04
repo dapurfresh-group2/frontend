@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "@Redux/cartSlice";
 import Tippy from "@tippyjs/react";
-import "tippy.js/dist/tippy.css"; // optional
+import "tippy.js/dist/tippy.css";
 import "tippy.js/themes/light.css";
 import "tippy.js/animations/scale.css";
 
@@ -24,7 +24,9 @@ export default function ProductCard({ id, img, name, price, info, weight }) {
   };
 
   const getProductQuantity = () => {
-    const filteredProduct = cart.filter((product) => product.id === id);
+    const filteredProduct = cart
+      ? cart.filter((product) => product.id === id)
+      : { quantity: 0 };
     return filteredProduct.quantity || 0;
   };
 

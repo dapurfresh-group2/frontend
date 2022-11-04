@@ -42,6 +42,7 @@ function ListKategori() {
       setCategories(categoriesRes.data.data);
     };
     fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [window.location.search]);
 
   return (
@@ -86,6 +87,7 @@ function ListKategori() {
               <SplideSlide key={category.id}>
                 <div
                   className={
+                    // eslint-disable-next-line eqeqeq
                     activeCategoryId == category.id ? styleActive : styleRegular
                   }
                   onClick={() => {

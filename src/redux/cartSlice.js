@@ -1,6 +1,6 @@
 // src/redux/cartSlice.js
 import { createSlice } from "@reduxjs/toolkit";
-import updateCartProductQuantity from "../api/cart/updateCartProductQuantity";
+import updateCartProductQuantity from "@Api/cart/updateCartProductQuantity";
 
 const cartSlice = createSlice({
   name: "cart",
