@@ -27,7 +27,7 @@ export default function ButtonCart({ bottom }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (cart?.length === 0) {
+  if (cart?.length === 0 || !cart) {
     return null;
   } else {
     return (
