@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const searchProduct = async (name) => {
+const getHistoryOrder = async () => {
   try {
-    const res = await axios.get(`http://108.137.148.110/api/v1/products/${name}`, {
+    const res = await axios.get("http://108.137.148.110/api/v1/order/history", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
@@ -13,4 +13,4 @@ const searchProduct = async (name) => {
   }
 };
 
-export default searchProduct;
+export default getHistoryOrder;

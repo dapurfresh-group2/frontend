@@ -8,10 +8,13 @@ const cartSlice = createSlice({
   initialState: {
     cart: [],
   },
-  extraReducers:
-   {
+  extraReducers: {
     [getActiveCart.fulfilled]: (state, action) => {
-      state.cart = action.payload;
+      if (action.payload === "cart active not found") {
+        state.cart = [];
+      } else {
+        state.cart = action.payload;
+      }
     },
     [updateCartProductQuantity.fulfilled]: (state, action) => {
       console.log(action.payload);
@@ -20,6 +23,5 @@ const cartSlice = createSlice({
 });
 
 export const cartReducer = cartSlice.reducer;
-console.log(cartSlice.reducer);
 export const { addToCart, incrementQuantity, decrementQuantity, getCart } =
   cartSlice.actions;

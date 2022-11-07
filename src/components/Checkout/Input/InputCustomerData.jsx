@@ -8,6 +8,8 @@ export default function InputCustomerData({
   note,
   marginLeft,
   marginBottom,
+  value,
+  onChange,
 }) {
   return (
     <div
@@ -37,6 +39,8 @@ export default function InputCustomerData({
           type={type}
           placeholder={placeholder}
           className="w-100"
+          value={value}
+          onChange={onChange}
           style={{
             fontWeight: "600",
             fontSize: "16px",

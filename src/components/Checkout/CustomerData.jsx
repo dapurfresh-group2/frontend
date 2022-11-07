@@ -4,7 +4,14 @@ import homeInputIcon from "@Assets/icons/home-input-icon.svg";
 import nameInputIcon from "@Assets/icons/name-input-icon.svg";
 import phoneInputIcon from "@Assets/icons/phone-input-icon.svg";
 
-export default function CustomerData() {
+export default function CustomerData({
+  name,
+  phone,
+  address,
+  nameOnChange,
+  phoneOnChange,
+  addressOnChange,
+}) {
   return (
     <div
       className="p-3 border-bottom border-2"
@@ -18,6 +25,8 @@ export default function CustomerData() {
         label="Nama Lengkap"
         img={nameInputIcon}
         placeholder="Masukkan nama lengkapmu"
+        value={name}
+        onChange={nameOnChange}
         marginBottom="20px"
       />
       <InputCustomerData
@@ -25,6 +34,8 @@ export default function CustomerData() {
         label="Nomor Telepon"
         img={phoneInputIcon}
         placeholder="Masukkan nomor teleponmu"
+        value={phone}
+        onChange={phoneOnChange}
         note="Nomor yang dapat dihubungi"
         marginLeft="10px"
         marginBottom="20px"
@@ -34,6 +45,8 @@ export default function CustomerData() {
         label="Alamat Tujuan"
         img={homeInputIcon}
         placeholder="Masukkan alamatmu"
+        value={address}
+        onChange={addressOnChange}
         marginBottom="10px"
       />
     </div>

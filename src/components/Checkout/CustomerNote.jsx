@@ -1,7 +1,7 @@
 import React from "react";
 import noteIcon from "@Assets/icons/note-icon.svg";
 
-export default function CustomerNote() {
+export default function CustomerNote({ value, onChange }) {
   return (
     <div
       className="p-3 py-4 border-bottom border-2"
@@ -31,6 +31,8 @@ export default function CustomerNote() {
           type="text"
           placeholder="Tambah satu ayam kampung ya"
           className="w-100"
+          value={value}
+          onChange={onChange}
           style={{
             backgroundColor: "rgba(247, 247, 249, 1)",
             marginLeft: "12px",

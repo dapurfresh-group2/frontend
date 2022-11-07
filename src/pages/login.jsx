@@ -18,7 +18,6 @@ export default function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const response = await login(username, password);
-    console.log(response);
     if (response.data?.message === "success") {
       localStorage.setItem("token", response.data.token);
       window.location = "/";

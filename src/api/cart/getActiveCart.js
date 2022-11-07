@@ -10,8 +10,7 @@ const getActiveCart = createAsyncThunk("cart/getCart", async () => {
     });
     return res.data.data;
   } catch (error) {
-    console.log(error);
-    // return error;
+    return error.response.data.message;
   }
 });
 

@@ -1,10 +1,40 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import toRupiahFormat from "@Utils/logic/toRupiahFormat";
 import ButtonMain from "@Components/Button/ButtonMain";
+import postCheckoutCart from "@Api/order/postCheckoutCart";
+import getActiveCart from "@Api/cart/getActiveCart";
+import Swal from "sweetalert2";
 
-export default function Payment() {
+export default function Payment({ name, phone, address, note }) {
   const cart = useSelector((state) => state.carts.cart);
+  const dispatch = useDispatch();
+
+  const onClickCheckoutHandler = async () => {
+    const res = await postCheckoutCart(cart.id, {
+      name,
+      phone,
+      address,
+      note,
+      shippingPrice: 5000,
+      totalPrice: cart.final_price,
+    }).then((res) => {
+      dispatch(getActiveCart());
+      console.log(res.data.message);
+      if (res.data.message === "success") {
+        Swal.fire({
+          icon: "success",
+          title: "Checkout Berhasil",
+          text: "Pesananmu akan segera diantar",
+          width: 310,
+          showConfirmButton: false,
+        });
+        window.location.href="/historyorder"
+      }
+    });
+    console.log(res);
+  };
+
   if (cart.length === 0) {
     return null;
   } else {
@@ -91,7 +121,7 @@ export default function Payment() {
             {toRupiahFormat(cart.final_price + 5000)}
           </p>
         </div>
-        <ButtonMain text="Pesan" />
+        <ButtonMain text="Pesan" onClick={() => onClickCheckoutHandler()} />
       </div>
     );
   }

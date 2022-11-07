@@ -1,5 +1,5 @@
 import React from "react";
-import { batch, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/themes/light.css";
@@ -15,17 +15,21 @@ import getActiveCart from "@Api/cart/getActiveCart";
 export default function ProductCard({ id, img, name, price, info, weight }) {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.carts.cart);
+
   const getProductQuantity = () => {
-    const filteredProduct = cart.cart_items
-      ? cart.cart_items.filter((product) => product.productId === id)
-      : [];
-    return filteredProduct.length > 0 ? filteredProduct[0].quantity : 0;
+    if (cart.cart_items) {
+      const filteredProduct = cart.cart_items
+        ? cart.cart_items.filter((product) => product.productId === id)
+        : [];
+      return filteredProduct.length > 0 ? filteredProduct[0].quantity : 0;
+    } else {
+      return 0;
+    }
   };
+
   const onClickAddProduct = () => {
-    batch(() => {
-      dispatch(updateCartProductQuantity({ id, quantity: 1 })).then(() => {
-        dispatch(getActiveCart());
-      });
+    dispatch(updateCartProductQuantity({ id, quantity: 1 })).then(() => {
+      dispatch(getActiveCart());
     });
   };
   const onClickMinHandler = () => {
@@ -103,12 +107,8 @@ export default function ProductCard({ id, img, name, price, info, weight }) {
             ) : (
               <QuantityButton
                 quantity={getProductQuantity()}
-                onClickMinHandler={() => {
-                  onClickMinHandler();
-                }}
-                onClickPlusHandler={() => {
-                  onClickPlusHandler();
-                }}
+                onClickMinHandler={onClickMinHandler}
+                onClickPlusHandler={onClickPlusHandler}
               />
             )}
             <p
