@@ -12,7 +12,7 @@ export default function ButtonCart({ bottom }) {
 
   const getItemsCartQantity = () => {
     let quantity = 0;
-    if (cart?.length === 0) {
+    if (cart?.length === 0 || !cart) {
       return quantity;
     } else {
       cart.cart_items.forEach((item) => {
