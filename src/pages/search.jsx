@@ -4,6 +4,7 @@ import "@Assets/styles/searchpage.css";
 import arrowButton from "@Assets/icons/arrow-icon.svg";
 import iconSearch from "@Assets/icons/search-icon.svg";
 import ProductCard from "@Components/ProductCard";
+import ButtonCart from "@Components/Button/ButtonCart";
 import resetInputImg from "@Assets/icons/cancel-icon.svg";
 import searchProduct from "@Api/product/searchProduct";
 import NotFoundProduct from "@Components/NotFound/NotFoundProduct";
@@ -82,6 +83,8 @@ function PageSearch() {
           {products.length > 0 ? (
             products.map((product) => (
               <ProductCard
+                key={product.id}
+                id={product.id}
                 name={product.name}
                 price={product.price}
                 info={product.info}
@@ -115,6 +118,7 @@ function PageSearch() {
           </div>
         </div>
       )}
+      <ButtonCart />
     </div>
   );
 }

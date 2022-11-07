@@ -1,7 +1,5 @@
 import React from "react";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "@Redux/cartSlice";
+import { batch, useDispatch, useSelector } from "react-redux";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/themes/light.css";
@@ -11,23 +9,38 @@ import PlusButtonText from "./PlusButtonText";
 import infoIcon from "@Assets/icons/info-icon.svg";
 import QuantityButton from "./QuantityButton";
 import toRupiahFormat from "@Utils/logic/toRupiahFormat";
+import updateCartProductQuantity from "@Api/cart/updateCartProductQuantity";
+import getActiveCart from "@Api/cart/getActiveCart";
 
 export default function ProductCard({ id, img, name, price, info, weight }) {
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart);
-  const [quantity, setQuantity] = useState(0);
+  const cart = useSelector((state) => state.carts.cart);
+  const getProductQuantity = () => {
+    const filteredProduct = cart.cart_items
+      ? cart.cart_items.filter((product) => product.productId === id)
+      : [];
+    return filteredProduct.length > 0 ? filteredProduct[0].quantity : 0;
+  };
+  const onClickAddProduct = () => {
+    batch(() => {
+      dispatch(updateCartProductQuantity({ id, quantity: 1 })).then(() => {
+        dispatch(getActiveCart());
+      });
+    });
+  };
   const onClickMinHandler = () => {
-    setQuantity(quantity - 1);
+    dispatch(
+      updateCartProductQuantity({ id, quantity: getProductQuantity() - 1 })
+    ).then(() => {
+      dispatch(getActiveCart());
+    });
   };
   const onClickPlusHandler = () => {
-    setQuantity(quantity + 1);
-  };
-
-  const getProductQuantity = () => {
-    const filteredProduct = cart
-      ? cart.filter((product) => product.id === id)
-      : { quantity: 0 };
-    return filteredProduct.quantity || 0;
+    dispatch(
+      updateCartProductQuantity({ id, quantity: getProductQuantity() + 1 })
+    ).then(() => {
+      dispatch(getActiveCart());
+    });
   };
 
   return (
@@ -84,14 +97,18 @@ export default function ProductCard({ id, img, name, price, info, weight }) {
             {getProductQuantity() === 0 ? (
               <PlusButtonText
                 onClickPlusHandler={() => {
-                  dispatch(addToCart({ id, quantity }));
+                  onClickAddProduct();
                 }}
               />
             ) : (
               <QuantityButton
-                quantity={quantity}
-                onClickMinHandler={onClickMinHandler}
-                onClickPlusHandler={onClickPlusHandler}
+                quantity={getProductQuantity()}
+                onClickMinHandler={() => {
+                  onClickMinHandler();
+                }}
+                onClickPlusHandler={() => {
+                  onClickPlusHandler();
+                }}
               />
             )}
             <p

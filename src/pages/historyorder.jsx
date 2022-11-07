@@ -32,7 +32,7 @@ export default function historyorder() {
               className="my-3"
               style={{ fontSize: "16px", fontWeight: "700" }}
             >
-              Hari Ini
+              Terbaru
             </h2>
             {data.map((history) => (
               <a style={{ textDecoration: "none" }} href="/historyorder/123">

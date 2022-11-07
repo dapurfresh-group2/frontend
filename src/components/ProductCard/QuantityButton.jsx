@@ -31,9 +31,11 @@ export default function QuantityButton({
         </div>
         <p
           style={{
-            margin: "auto 18px",
+            width: "15px",
+            margin: "auto 15px",
             fontSize: "16px",
             fontWeight: "600",
+            textAlign: "center",
           }}
         >
           {quantity}

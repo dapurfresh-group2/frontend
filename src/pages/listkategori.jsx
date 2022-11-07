@@ -6,6 +6,7 @@ import "@Assets/styles/listkategori.css";
 import ProductCard from "@Components/ProductCard";
 import arrowButton from "@Assets/icons/arrow-icon.svg";
 import SearchCategory from "@Components/Search/SearchCategory";
+import ButtonCart from "@Components/Button/ButtonCart";
 import getProductsByCategory from "@Api/product/getProductsByCategory";
 import getAllCategories from "@Api/product/getAllCategories";
 import NotFoundProduct from "@Components/NotFound/NotFoundProduct";
@@ -42,7 +43,7 @@ function ListKategori() {
       setCategories(categoriesRes.data.data);
     };
     fetchData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [window.location.search]);
 
   return (
@@ -110,6 +111,8 @@ function ListKategori() {
           filteredProductsData.length > 0 ? (
             filteredProductsData.map((product) => (
               <ProductCard
+                key={product.id}
+                id={product.id}
                 name={product.name}
                 price={product.price}
                 info={product.info}
@@ -123,6 +126,7 @@ function ListKategori() {
         ) : (
           <SkeletonProductList />
         )}
+        <ButtonCart />
       </div>
     </div>
   );

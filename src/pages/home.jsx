@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import Header from "@Components/Header";
 import Category from "@Components/Category";
 import ProductCard from "@Components/ProductCard";
@@ -83,7 +82,7 @@ export default function Home() {
       </div>
 
       <MenuBar isActive="Belanja" />
-      <ButtonCart totalBill="4.680" quantity="1" bottom="80px" />
+      <ButtonCart bottom="80px" />
     </div>
   );
 }

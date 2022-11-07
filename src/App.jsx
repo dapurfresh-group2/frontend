@@ -7,11 +7,15 @@ import { useEffect } from "react";
 export default function App() {
   useEffect(() => {
     const onScroll = () => {
-      const floatingCartButton = document.getElementById("floatingCart");
-      floatingCartButton.setAttribute("open", false);
-      setTimeout(() => {
-        floatingCartButton.setAttribute("open", true);
-      }, 500);
+      try {
+        const floatingCartButton = document.getElementById("floatingCart");
+        floatingCartButton.setAttribute("open", false);
+        setTimeout(() => {
+          floatingCartButton.setAttribute("open", true);
+        }, 500);
+      } catch (e) {
+        console.log(e);
+      }
     };
     // clean up code
     window.removeEventListener("scroll", onScroll);
