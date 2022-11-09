@@ -11,28 +11,37 @@ export default function Payment({ name, phone, address, note }) {
   const dispatch = useDispatch();
 
   const onClickCheckoutHandler = async () => {
-    const res = await postCheckoutCart(cart.id, {
-      name,
-      phone,
-      address,
-      note,
-      shippingPrice: 5000,
-      totalPrice: cart.final_price,
-    }).then((res) => {
-      dispatch(getActiveCart());
-      console.log(res.data.message);
-      if (res.data.message === "success") {
-        Swal.fire({
-          icon: "success",
-          title: "Checkout Berhasil",
-          text: "Pesananmu akan segera diantar",
-          width: 310,
-          showConfirmButton: false,
-        });
-        window.location.href="/historyorder"
-      }
-    });
-    console.log(res);
+    if (!name || !phone || !address) {
+      Swal.fire({
+        icon: "error",
+        title: "Checkout Gagal",
+        text: "Kamu harus memasukkan datamu terlebih dahulu",
+        width: 310,
+        showConfirmButton: false,
+      });
+    } else {
+      const res = await postCheckoutCart(cart.id, {
+        name,
+        phone,
+        address,
+        note,
+        shippingPrice: 5000,
+        totalPrice: cart.final_price,
+      }).then((res) => {
+        dispatch(getActiveCart());
+        if (res.data.message === "success") {
+          Swal.fire({
+            icon: "success",
+            title: "Checkout Berhasil",
+            text: "Pesananmu akan segera diantar",
+            width: 310,
+            showConfirmButton: false,
+          }).then(() => {
+            window.location.href = "/historyorder";
+          });
+        }
+      });
+    }
   };
 
   if (cart.length === 0) {
