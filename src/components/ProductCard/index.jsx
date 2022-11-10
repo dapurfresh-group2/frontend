@@ -11,8 +11,17 @@ import QuantityButton from "./QuantityButton";
 import toRupiahFormat from "@Utils/logic/toRupiahFormat";
 import updateCartProductQuantity from "@Api/cart/updateCartProductQuantity";
 import getActiveCart from "@Api/cart/getActiveCart";
+import getPriceBeforeDiscount from "@Utils/logic/getPriceBeforeDIscount";
 
-export default function ProductCard({ id, img, name, price, info, weight }) {
+export default function ProductCard({
+  id,
+  img,
+  name,
+  price,
+  info,
+  weight,
+  discount = 10,
+}) {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.carts.cart);
 
@@ -85,17 +94,61 @@ export default function ProductCard({ id, img, name, price, info, weight }) {
               </Tippy>
             ) : null}
           </div>
-          <div className="d-flex mt-3">
+          {discount !== 0 ? (
+            <div
+              className="rounded-pill mb-1"
+              style={{
+                backgroundColor: "rgba(255, 214, 0, 1)",
+                padding: "1px 5px",
+                width: "max-content",
+              }}
+            >
+              <p
+                className="text-danger my-auto"
+                style={{
+                  fontSize: "10px",
+                  fontWeight: "600",
+                  color: "#444444",
+                  marginBottom: "0px",
+                }}
+              >
+                {`${discount}%`}
+              </p>
+            </div>
+          ) : (
+            <div
+              style={{ height: "21px", width: "100%", backgroundColor: "#FFF" }}
+            ></div>
+          )}
+          <div className={discount !== 0 ? "d-flex" : "d-flex"}>
             <h2
               style={{
                 fontSize: "15px",
                 fontWeight: "600",
                 color: "#444444",
                 marginBottom: "0px",
+                marginRight: "5px",
               }}
             >
               {toRupiahFormat(price)}
             </h2>
+            {discount !== 0 ? (
+              <h3
+                className="ms-1"
+                style={{
+                  fontSize: "13px",
+                  fontWeight: "500",
+                  color: "rgba(68, 68, 68, 0.5)",
+                  marginTop: "1px",
+                  marginBottom: "0px",
+                  textDecoration: "line-through",
+                }}
+              >
+                {toRupiahFormat(
+                  getPriceBeforeDiscount(price, discount).toFixed()
+                )}
+              </h3>
+            ) : null}
           </div>
           <div className="d-flex align-items-center mt-1">
             {getProductQuantity() === 0 ? (

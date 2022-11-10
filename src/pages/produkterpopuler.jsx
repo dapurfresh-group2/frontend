@@ -1,40 +1,41 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 import ProductCard from "@Components/ProductCard";
-import kangkungImage from "@Assets/images/product/kangkung.png";
 import HeaderTextWithBackButton from "@Components/Header/HeaderWithBackButton";
+import getPopularProducts from "@Api/product/getPopularProducts";
+import SkeletonProductList from "@Components/SkeletonLoading/SkeletonProductList";
 
 function ProdukTerpopuler() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const productsRes = await getPopularProducts();
+      setProducts(productsRes.data.data);
+    };
+    fetchData();
+  }, []);
   return (
     <div>
       <HeaderTextWithBackButton text="Produk Terpopuler" />
       <div className="extra-container-blank"></div>
 
       <div className="px-3 mt-3">
-        <ProductCard
-          img={kangkungImage}
-          name="Kangkung"
-          price="Rp20.000"
-          info="Ini info"
-          weight="1 ikat"
-        />
-      </div>
-      <div className="px-3 mt-3">
-        <ProductCard
-          img={kangkungImage}
-          name="Kangkung"
-          price="Rp20.000"
-          info="Ini info"
-          weight="1 ikat"
-        />
-      </div>
-      <div className="px-3 mt-3">
-        <ProductCard
-          img={kangkungImage}
-          name="Kangkung"
-          price="Rp20.000"
-          info="Ini info"
-          weight="1 ikat"
-        />
+        {products.length > 0 ? (
+          products.map((product) => (
+            <ProductCard
+              key={product.id}
+              id={product.id}
+              name={product.name}
+              price={product.price}
+              info={product.info}
+              weight={product.weight}
+              img={`http://108.137.148.110${product.image}`}
+            />
+          ))
+        ) : (
+          <SkeletonProductList count={5} />
+        )}
       </div>
     </div>
   );
