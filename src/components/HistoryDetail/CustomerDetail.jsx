@@ -1,8 +1,8 @@
 import React from "react";
 
-export default function CustomerDetail({ status }) {
+export default function CustomerDetail({ status, name }) {
   return (
-    <div className="border-bottom pb-3" style={{marginTop: "52px"}}>
+    <div className="border-bottom pb-3" style={{ marginTop: "52px" }}>
       <div
         className="d-flex justify-content-between px-3 py-2 mb-1"
         style={{ backgroundColor: "rgba(242, 242, 242, 1)" }}
@@ -19,7 +19,7 @@ export default function CustomerDetail({ status }) {
             style={{
               textTransform: "capitalize",
               color:
-                status === "proses"
+                status === "Proses"
                   ? "rgba(0, 172, 15, 1)"
                   : "rgba(239, 38, 54, 1)",
             }}
@@ -55,7 +55,7 @@ export default function CustomerDetail({ status }) {
             color: "rgba(68, 68, 68, 1)",
           }}
         >
-          Dinda binti Toha
+          {name}
         </p>
       </div>
     </div>

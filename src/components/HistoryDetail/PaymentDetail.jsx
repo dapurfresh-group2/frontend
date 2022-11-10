@@ -1,6 +1,7 @@
 import React from "react";
+import toRupiahFormat from "@Utils/logic/toRupiahFormat";
 
-export default function PaymentDetail() {
+export default function PaymentDetail({ ongkosKirim, total }) {
   return (
     <div>
       <div className="border-bottom py-3">
@@ -62,7 +63,7 @@ export default function PaymentDetail() {
                 color: "rgba(68, 68, 68, 1)",
               }}
             >
-              Rp3.000
+              {toRupiahFormat(parseInt(ongkosKirim))}
             </p>
           </div>
           <hr style={{ borderTop: "2px dashed rgba(196, 196, 196, 1)" }} />
@@ -88,7 +89,7 @@ export default function PaymentDetail() {
                 color: "rgba(68, 68, 68, 1)",
               }}
             >
-              Rp8.200
+              {toRupiahFormat(parseInt(total))}
             </p>
           </div>
           <hr style={{ borderTop: "2px dashed rgba(196, 196, 196, 1)" }} />

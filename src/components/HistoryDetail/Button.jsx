@@ -10,7 +10,7 @@ export default function Button({ status, cancelOrderOnClick }) {
       }}
     >
       <ButtonMain text="Bantuan" />
-      {status === "proses" ? (
+      {status === "Proses" ? (
         <button
           onClick={() => cancelOrderOnClick()}
           className="w-100 bg-white"

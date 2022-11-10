@@ -1,7 +1,7 @@
 import React from "react";
 import homeIcon from "@Assets/icons/home-icon.svg";
 
-export default function DeliveryDetail() {
+export default function DeliveryDetail({ address }) {
   return (
     <div className="border-bottom py-3">
       <div className="mx-3">
@@ -34,7 +34,7 @@ export default function DeliveryDetail() {
                 color: "rgba(68, 68, 68, 1)",
               }}
             >
-              Jl. Letjen Suprapto No. 59
+              {address}
             </p>
           </div>
         </div>

@@ -13,11 +13,18 @@ import GetHistoryDetail from "@Api/order/getHistoryDetail";
 
 
 
+
 export default function HistoryOrderDetail() {
 
   const { id } = useParams();
 
-  const [status, setStatus] = useState("proses");
+  const [status, setStatus] = useState();
+  const [name, setName] = useState();
+  const [address, setAddress] = useState();
+  const [note, setNote] = useState();
+  const [ongkosKirim, setOngkosKirim] = useState();
+  const [total, setTotal] = useState();
+  const [orderDetailProduct, setOrderDetailProduct] = useState();
 
 
   const deleteOrderHandler = () => {
@@ -31,8 +38,15 @@ export default function HistoryOrderDetail() {
   useEffect(() => {
 
     const FetchData = async () => {
-      const historyDetailRes = await GetHistoryDetail();
-      console.log(historyDetailRes);
+      const historyDetailRes = await GetHistoryDetail(id);
+      setStatus(historyDetailRes.data.data.status);
+      setName(historyDetailRes.data.data.name);
+      setAddress(historyDetailRes.data.data.address);
+      setNote(historyDetailRes.data.data.note);
+      setOngkosKirim(historyDetailRes.data.data.shipping_price);
+      setTotal(historyDetailRes.data.data.total_price);
+      setOrderDetailProduct(historyDetailRes.data.data.cart.cart_items)
+      console.log(historyDetailRes.data.data);
     };
     FetchData();
   }, [id]);
@@ -41,10 +55,10 @@ export default function HistoryOrderDetail() {
   return (
     <div>
       <HeaderWithBackButton text="Detail Riwayat Pesanan" />
-      <CustomerDetail status={status} />
-      <DeliveryDetail />
-      <OrderDetail />
-      <PaymentDetail />
+      <CustomerDetail status={status} name={name} />
+      <DeliveryDetail address={address} />
+      <OrderDetail note={note} orderDetailProduct={orderDetailProduct} />
+      <PaymentDetail ongkosKirim={ongkosKirim} total={total} />
       <Button status={status} cancelOrderOnClick={cancelOnClickHandler} />
     </div>
   );

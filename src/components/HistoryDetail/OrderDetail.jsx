@@ -1,6 +1,8 @@
 import React from "react";
 
-export default function OrderDetail() {
+export default function OrderDetail({ note, orderDetailProduct }) {
+  console.log(orderDetailProduct);
+
   return (
     <div>
       <div className="border-bottom py-3">
@@ -15,26 +17,34 @@ export default function OrderDetail() {
           >
             Detail Pesanan
           </p>
-          <div className="d-flex justify-content-between">
-            <p
-              style={{
-                fontSize: "12px",
-                fontWeight: "700",
-                color: "rgba(68, 68, 68, 1)",
-              }}
-            >
-              Kangkung
-            </p>
-            <p
-              style={{
-                fontSize: "12px",
-                fontWeight: "700",
-                color: "rgba(68, 68, 68, 1)",
-              }}
-            >
-              1 x 1 Ikat
-            </p>
-          </div>
+
+          {orderDetailProduct && orderDetailProduct.map(item => {
+            return (
+              <div key={item.product.id} className="d-flex justify-content-between">
+                <p
+                  style={{
+                    fontSize: "12px",
+                    fontWeight: "700",
+                    color: "rgba(68, 68, 68, 1)",
+                  }}
+                >
+                  {item.product.name}
+                </p>
+                <p
+                  style={{
+                    fontSize: "12px",
+                    fontWeight: "700",
+                    color: "rgba(68, 68, 68, 1)",
+                  }}
+                >
+                  {item.quantity} x {item.product.weight}
+                </p>
+              </div>
+            )
+          })}
+
+
+
           <p
             style={{
               fontSize: "12px",
@@ -53,7 +63,7 @@ export default function OrderDetail() {
               color: "rgba(68, 68, 68, 1)",
             }}
           >
-            Jangan pakai plastik
+            {note}
           </p>
         </div>
       </div>

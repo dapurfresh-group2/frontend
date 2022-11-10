@@ -41,6 +41,7 @@ export default function Payment({ name, phone, address, note }) {
           });
         }
       });
+      return res;
     }
   };
 
