@@ -33,7 +33,10 @@ export default function HistoryOrder() {
                 Hari Ini
               </h2>
               {historyData.map((history) => (
-                <a style={{ textDecoration: "none" }} href="/historyorder/123">
+                <a
+                  style={{ textDecoration: "none" }}
+                  href={`/historyorder/${history.id}`}
+                >
                   <HistoryOrderCard
                     key={history.id}
                     name={history.name}
