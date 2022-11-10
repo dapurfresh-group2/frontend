@@ -7,6 +7,7 @@ import MenuBar from "@Components/MenuBar";
 import HeaderWithText from "@Components/Header/HeaderWithText";
 import OrderHistoryNotFound from "@Components/NotFound/OrderHistoryNotFound";
 import SkeletonHistory from "@Components/SkeletonLoading/SkeletonHistory";
+import getHistoryProductTitle from "@Utils/logic/getHistoryProductTitle";
 
 export default function HistoryOrder() {
   const [historyData, setHistoryData] = useState();
@@ -35,13 +36,14 @@ export default function HistoryOrder() {
               {historyData.map((history) => (
 
                 <a
+                  key={history.id}
                   style={{ textDecoration: "none" }}
                   href={`/historyorder/${history.id}`}
                 >
 
                   <HistoryOrderCard
                     key={history.id}
-                    name={history.name}
+                    name={getHistoryProductTitle(history.cart.cart_items)}
                     date={convertDate(history.createdAt)}
                     status={history.status.toLowerCase()}
                   />
