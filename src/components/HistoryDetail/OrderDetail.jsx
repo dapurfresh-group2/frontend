@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function OrderDetail({ note, orderDetailProduct }) {
-  console.log(orderDetailProduct);
 
   return (
     <div>

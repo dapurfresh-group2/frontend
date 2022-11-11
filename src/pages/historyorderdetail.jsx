@@ -10,6 +10,8 @@ import PaymentDetail from "@Components/HistoryDetail/PaymentDetail";
 import Button from "@Components/HistoryDetail/Button";
 import deleteModal from "@Utils/interface/deleteModal";
 import GetHistoryDetail from "@Api/order/getHistoryDetail";
+import cancelOrder from "@Api/order/cancelOrder";
+import Swal from "sweetalert2";
 
 
 
@@ -25,10 +27,23 @@ export default function HistoryOrderDetail() {
   const [ongkosKirim, setOngkosKirim] = useState();
   const [total, setTotal] = useState();
   const [orderDetailProduct, setOrderDetailProduct] = useState();
+  const [totalPayment, setTotalPayment] = useState();
+  const [waktuDiantar, setWaktuDiantar] = useState();
 
 
-  const deleteOrderHandler = () => {
-    alert("Delete order called");
+  const deleteOrderHandler = async () => {
+    const processDeleteOrder = await cancelOrder(id);
+    if (processDeleteOrder.data.message === "success") {
+      setStatus(processDeleteOrder.data.data.status);
+      Swal.fire({
+        icon: "success",
+        title: "Pesanan Dibatalkan",
+        text: "Pesanan anda telah dibatalkan",
+        width: 310,
+        showConfirmButton: false,
+      });
+    }
+    console.log(processDeleteOrder);
   };
 
   const cancelOnClickHandler = () => {
@@ -45,20 +60,24 @@ export default function HistoryOrderDetail() {
       setNote(historyDetailRes.data.data.note);
       setOngkosKirim(historyDetailRes.data.data.shipping_price);
       setTotal(historyDetailRes.data.data.total_price);
-      setOrderDetailProduct(historyDetailRes.data.data.cart.cart_items)
+      setOrderDetailProduct(historyDetailRes.data.data.cart.cart_items);
+      setTotalPayment(parseInt(historyDetailRes.data.data.total_price) + parseInt(historyDetailRes.data.data.shipping_price));
+      setWaktuDiantar(historyDetailRes.data.data.createdAt);
+
       console.log(historyDetailRes.data.data);
+      console.log(historyDetailRes.data.data.status);
     };
     FetchData();
-  }, [id]);
+  }, [id, status]);
 
 
   return (
     <div>
       <HeaderWithBackButton text="Detail Riwayat Pesanan" />
-      <CustomerDetail status={status} name={name} />
+      <CustomerDetail status={status} name={name} waktuDiantar={waktuDiantar} />
       <DeliveryDetail address={address} />
       <OrderDetail note={note} orderDetailProduct={orderDetailProduct} />
-      <PaymentDetail ongkosKirim={ongkosKirim} total={total} />
+      <PaymentDetail subTotal={total} ongkosKirim={ongkosKirim} total={totalPayment} />
       <Button status={status} cancelOrderOnClick={cancelOnClickHandler} />
     </div>
   );

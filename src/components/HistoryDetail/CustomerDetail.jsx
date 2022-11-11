@@ -1,6 +1,7 @@
 import React from "react";
+import convertDate from "@Utils/logic/convertTime";
 
-export default function CustomerDetail({ status, name }) {
+export default function CustomerDetail({ status, name, waktuDiantar }) {
   return (
     <div className="border-bottom pb-3" style={{ marginTop: "52px" }}>
       <div
@@ -34,7 +35,7 @@ export default function CustomerDetail({ status, name }) {
             color: "rgba(136, 136, 136, 1)",
           }}
         >
-          Diantar: <span style={{ fontWeight: "700" }}>8 Sept 2019</span>
+          Diantar: <span style={{ fontWeight: "700" }}>{convertDate(waktuDiantar)}</span>
         </p>
       </div>
       <div className="mx-3">
