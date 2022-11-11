@@ -65,7 +65,6 @@ export default function HistoryOrderDetail() {
       setWaktuDiantar(historyDetailRes.data.data.createdAt);
 
       console.log(historyDetailRes.data.data);
-      console.log(historyDetailRes.data.data.status);
     };
     FetchData();
   }, [id, status]);

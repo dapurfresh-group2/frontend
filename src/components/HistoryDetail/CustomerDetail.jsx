@@ -1,7 +1,22 @@
 import React from "react";
-import convertDate from "@Utils/logic/convertTime";
+import { useState } from "react";
+import { useEffect } from "react";
+import GetOrderTime from "@Utils/logic/getOrderTime";
 
 export default function CustomerDetail({ status, name, waktuDiantar }) {
+
+  const [deliveryDate, setDeliveryDate] = useState();
+
+  useEffect(() => {
+    const FetchDeliveryDate = async () => {
+      const deliveryDateRes = await GetOrderTime(waktuDiantar);
+      setDeliveryDate(deliveryDateRes);
+    };
+
+    FetchDeliveryDate();
+
+  }, [waktuDiantar]);
+
   return (
     <div className="border-bottom pb-3" style={{ marginTop: "52px" }}>
       <div
@@ -35,7 +50,7 @@ export default function CustomerDetail({ status, name, waktuDiantar }) {
             color: "rgba(136, 136, 136, 1)",
           }}
         >
-          Diantar: <span style={{ fontWeight: "700" }}>{convertDate(waktuDiantar)}</span>
+          Diantar: <span style={{ fontWeight: "700" }}>{deliveryDate}</span>
         </p>
       </div>
       <div className="mx-3">
