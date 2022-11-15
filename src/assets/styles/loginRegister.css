@@ -1,0 +1,74 @@
+.page-home {
+    background: #FCFCFC;
+}
+
+.card-masuk {
+    width: 310px;
+    border-radius: 5px;
+}
+
+.text-masuk {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #444444;
+
+}
+
+.field-input {
+    width: 285px;
+    border: 1px solid rgba(0, 0, 0, 0.36);
+    border-radius: 65px;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.btn-masuk {
+    Width: 273px;
+    Height: 44px;
+    background: #6AA434;
+    border: none;
+    border-radius: 50px;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    color: #FFFFFF;
+}
+
+.text-atau {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    color: #979797;
+
+}
+
+.btn-link-daftar {
+    width: 285px;
+    height: 55px;
+    background: #FFFFFF;
+    border: 2px solid #6AA434;
+    border-radius: 50px;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    color: #444444;
+}
+
+.input-number::-webkit-outer-spin-button,
+.input-number::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.input-number {
+    -moz-appearance: textfield;
+}

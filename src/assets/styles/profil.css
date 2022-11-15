@@ -1,0 +1,152 @@
+.avatar-image {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.profil-name {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+
+    color: #444444;
+}
+
+.edit-profil {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+
+    color: #444444;
+}
+
+.deskription-profil-menu {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+
+    color: #444444;
+}
+
+.line-bottom {
+    border-bottom: 1px solid #C4C4C4;
+    width: 100%;
+}
+
+.vector-icon {
+    width: 25px;
+}
+
+.btn-logout {
+    width: 320px;
+    height: 46px;
+
+    background: #FCFCFC;
+    border: 1px solid #EF2636;
+    border-radius: 6px;
+
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+
+    color: #EF2636;
+}
+
+.btn-logout:hover {
+    background: #FCFCFC;
+}
+
+/* Edit Profil */
+
+.container-header-bg-white {
+    border-bottom: 2px solid #E5E5E5;
+    position: fixed;
+    height: 50px;
+    width: 360px;
+    background-color: #FFFFFF;
+}
+
+.extra-container-blank {
+    height: 50px;
+}
+
+.title-header {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+
+    color: #444444;
+}
+
+.container-avatar {
+    height: 170px;
+}
+
+.avatar-relative {
+    position: relative;
+}
+
+.avatar-edit {
+    width: 120px;
+    height: 120px;
+    border-radius: 85px;
+    filter: brightness(50%);
+}
+
+.camera-absolute {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.camera-edit {
+    width: 45px;
+    height: 32.34px;
+}
+
+.input-edit-profil {
+    width: 320px;
+    height: 56px;
+
+    background: #F2F2F2;
+    border: 0.2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+
+
+    color: rgba(68, 68, 68, 0.6);
+
+}
+
+.input-number::-webkit-outer-spin-button,
+.input-number::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.input-number {
+    -moz-appearance: textfield;
+}
+
+.btn-save-profil {
+    width: 330px;
+    height: 50px;
+
+    background: #6AA434;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 21px;
+
+    color: #FFFFFF;
+}
+
+#file-input {
+    display: none;
+}
