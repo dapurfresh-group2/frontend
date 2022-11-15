@@ -63,20 +63,21 @@ export default function ProductCard({
         boxShadow: "0px 1px 2px 0px rgba(0, 0, 0, 0.25",
       }}
     >
-      <div className="d-flex">
+      <div className="d-flex align-content-center">
         <img
           src={img}
           alt="product-img"
+          className="align-self-center"
           style={{ width: "80px", height: "80px", borderRadius: "5px" }}
         />
         <div className="ms-3 w-100">
-          <div className="d-flex justify-content-between align-content-start mb-1">
+          <div className="d-flex justify-content-between align-content-start">
             <h1
               style={{
                 fontSize: "18px",
                 fontWeight: "600",
                 color: "#444444",
-                marginBottom: "0px",
+                marginBottom: "2px",
               }}
             >
               {name}

@@ -14,12 +14,8 @@ import cancelOrder from "@Api/order/cancelOrder";
 import Swal from "sweetalert2";
 
 
-
-
 export default function HistoryOrderDetail() {
-
   const { id } = useParams();
-
   const [status, setStatus] = useState();
   const [name, setName] = useState();
   const [address, setAddress] = useState();
@@ -29,7 +25,6 @@ export default function HistoryOrderDetail() {
   const [orderDetailProduct, setOrderDetailProduct] = useState();
   const [totalPayment, setTotalPayment] = useState();
   const [waktuDiantar, setWaktuDiantar] = useState();
-
 
   const deleteOrderHandler = async () => {
     const processDeleteOrder = await cancelOrder(id);

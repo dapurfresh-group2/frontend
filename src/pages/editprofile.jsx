@@ -11,7 +11,7 @@ import InputEditProfil from "@Components/Profil/inputeditprofil";
 import HeaderTextWithBackButton from "@Components/Header/HeaderWithBackButton";
 import cameraImg from "@Assets/images/profil/camera.png";
 
-function EditProfil() {
+function EditProfile() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
@@ -135,4 +135,4 @@ function EditProfil() {
   );
 }
 
-export default EditProfil;
+export default EditProfile;

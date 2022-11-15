@@ -6,9 +6,9 @@ import PageSearch from "@Pages/search";
 import HistoryOrder from "@Pages/historyorder";
 import HistoryOrderDetail from "@Pages/historyorderdetail";
 import Profile from "@Pages/profile";
-import EditProfil from "@Pages/editprofil";
-import ProdukTerpopuler from "@Pages/produkterpopuler";
-import ListKategori from "@Pages/listkategori";
+import EditProfile from "@Pages/editprofile";
+import PopularProducts from "@Pages/popularproducts";
+import CategoryList from "@Pages/categorylist";
 import Checkout from "@Pages/checkout";
 import checkLoggedMiddleware from "@Middleware/checkLoggedMiddleware";
 
@@ -43,15 +43,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/editprofile",
-    element: checkLoggedMiddleware(<EditProfil />),
+    element: checkLoggedMiddleware(<EditProfile />),
   },
   {
     path: "/popularproducts",
-    element: checkLoggedMiddleware(<ProdukTerpopuler />),
+    element: checkLoggedMiddleware(<PopularProducts />),
   },
   {
     path: "/categories",
-    element: checkLoggedMiddleware(<ListKategori />),
+    element: checkLoggedMiddleware(<CategoryList />),
   },
   {
     path: "/checkout",

@@ -89,6 +89,7 @@ function PageSearch() {
                 price={product.price}
                 info={product.info}
                 weight={product.weight}
+                discount={product.discount}
                 img={`http://108.137.148.110${product.image}`}
               />
             ))

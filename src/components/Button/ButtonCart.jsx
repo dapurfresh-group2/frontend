@@ -10,8 +10,11 @@ export default function ButtonCart({ bottom }) {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.carts.cart);
 
-  const getItemsCartQantity = () => {
+  const getItemsCartQuantity = () => {
     let quantity = 0;
+    if (cart === "failed jwt expired") {
+      return quantity;
+    }
     if (cart?.length === 0 || !cart) {
       return quantity;
     } else {
@@ -57,7 +60,7 @@ export default function ButtonCart({ bottom }) {
                   marginRight: "10px",
                 }}
               >
-                {getItemsCartQantity()} item
+                {getItemsCartQuantity()} item
               </p>
               <img src={lineIcon} alt="line icon" />
               <p
@@ -68,7 +71,7 @@ export default function ButtonCart({ bottom }) {
                   marginLeft: "10px",
                 }}
               >
-                {toRupiahFormat(cart.final_price)}
+                {cart.final_price ? toRupiahFormat(cart.final_price) : "Rp0"}
               </p>
             </div>
             <img src={cartIcon} alt="" />
