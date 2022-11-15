@@ -17,8 +17,7 @@ export default function Home() {
     const fetchData = async () => {
       // Get all categories and set it to state
       const categoriesRes = await getAllCategories();
-      console.log(categoriesRes);
-      if (categoriesRes.response.data.message === "failed jwt expired") {
+      if (categoriesRes.data.message === "failed jwt expired") {
         window.location.href = "/login";
       }
       setCategoriesData(categoriesRes.data.data);
