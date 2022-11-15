@@ -16,7 +16,4 @@ module.exports = {
       "@Redux": path.resolve(__dirname, "src/redux"),
     },
   },
-  devServer: {
-    port: 5000,
-  },
 };
