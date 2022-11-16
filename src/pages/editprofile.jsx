@@ -22,10 +22,10 @@ function EditProfile() {
     event.preventDefault();
     if (selectedFile) {
       const formData = new FormData();
-      formData.append('name', name);
-      formData.append('phone', phone);
-      formData.append('address', address);
-      formData.append('file', selectedFile);
+      formData.append("name", name);
+      formData.append("phone", phone);
+      formData.append("address", address);
+      formData.append("file", selectedFile);
       const editProfileRes = await putProfile(formData);
 
       if (editProfileRes.data.message === "success") {
@@ -39,9 +39,9 @@ function EditProfile() {
       }
     } else {
       const formData = new FormData();
-      formData.append('name', name);
-      formData.append('phone', phone);
-      formData.append('address', address);
+      formData.append("name", name);
+      formData.append("phone", phone);
+      formData.append("address", address);
       const editProfileRes = await putProfile(formData);
 
       if (editProfileRes.data.message === "success") {
@@ -73,7 +73,7 @@ function EditProfile() {
 
   return (
     <div>
-      <HeaderTextWithBackButton text="Edit Profil" />
+      <HeaderTextWithBackButton text="Edit Profil" backPath="/profile" />
       <div className="extra-container-blank"></div>
 
       <form onSubmit={handleSubmit}>

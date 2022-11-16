@@ -32,6 +32,7 @@ export default function Register() {
       setPhone("");
       setUsername("");
       setPassword("");
+      window.location.href = "/login";
     } else if (res.response.data.message === "failed username has been used") {
       Swal.fire({
         icon: "error",

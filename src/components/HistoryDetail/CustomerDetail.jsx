@@ -5,7 +5,7 @@ import getOrderTime from "@Utils/logic/getOrderTime";
 
 export default function CustomerDetail({ status, name, date }) {
   return (
-    <div className="border-bottom pb-3" style={{ marginTop: "52px" }}>
+    <div className="border-bottom pb-3" style={{ marginTop: "57px" }}>
       <div
         className="d-flex justify-content-between px-3 py-2 mb-1"
         style={{ backgroundColor: "rgba(242, 242, 242, 1)" }}

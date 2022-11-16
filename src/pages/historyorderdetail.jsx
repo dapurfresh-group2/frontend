@@ -1,6 +1,5 @@
 import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import HeaderWithBackButton from "@Components/Header/HeaderWithBackButton";
 import CustomerDetail from "@Components/HistoryDetail/CustomerDetail";
@@ -66,7 +65,7 @@ export default function HistoryOrderDetail() {
 
   return (
     <div>
-      <HeaderWithBackButton text="Detail Riwayat Pesanan" />
+      <HeaderWithBackButton text="Detail Riwayat Pesanan" backPath="/historyorder" />
       <CustomerDetail status={status} name={name} date={waktuDiantar} />
       <DeliveryDetail address={address} />
       <OrderDetail note={note} orderDetailProduct={orderDetailProduct} />
