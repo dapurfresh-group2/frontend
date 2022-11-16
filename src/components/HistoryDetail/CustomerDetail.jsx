@@ -1,22 +1,9 @@
 import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
-import GetOrderTime from "@Utils/logic/getOrderTime";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import getOrderTime from "@Utils/logic/getOrderTime";
 
-export default function CustomerDetail({ status, name, waktuDiantar }) {
-
-  const [deliveryDate, setDeliveryDate] = useState();
-
-  useEffect(() => {
-    const FetchDeliveryDate = async () => {
-      const deliveryDateRes = await GetOrderTime(waktuDiantar);
-      setDeliveryDate(deliveryDateRes);
-    };
-
-    FetchDeliveryDate();
-
-  }, [waktuDiantar]);
-
+export default function CustomerDetail({ status, name, date }) {
   return (
     <div className="border-bottom pb-3" style={{ marginTop: "52px" }}>
       <div
@@ -24,6 +11,7 @@ export default function CustomerDetail({ status, name, waktuDiantar }) {
         style={{ backgroundColor: "rgba(242, 242, 242, 1)" }}
       >
         <p
+          className="d-flex"
           style={{
             fontSize: "12px",
             fontWeight: "600",
@@ -34,23 +22,28 @@ export default function CustomerDetail({ status, name, waktuDiantar }) {
           <span
             style={{
               textTransform: "capitalize",
+              marginLeft: "3px",
               color:
                 status === "Proses"
                   ? "rgba(0, 172, 15, 1)"
                   : "rgba(239, 38, 54, 1)",
             }}
           >
-            {status}
+            {status ? status : <Skeleton width={50} />}
           </span>
         </p>
         <p
+          className="d-flex"
           style={{
             fontSize: "12px",
             fontWeight: "600",
             color: "rgba(136, 136, 136, 1)",
           }}
         >
-          Diantar: <span style={{ fontWeight: "700" }}>{deliveryDate}</span>
+          Diantar:{" "}
+          <span style={{ fontWeight: "700", marginLeft: "3px" }}>
+            {date ? getOrderTime(date) : <Skeleton width={80} />}
+          </span>
         </p>
       </div>
       <div className="mx-3">
@@ -71,7 +64,7 @@ export default function CustomerDetail({ status, name, waktuDiantar }) {
             color: "rgba(68, 68, 68, 1)",
           }}
         >
-          {name}
+          {name ? name : <Skeleton width={100} />}
         </p>
       </div>
     </div>

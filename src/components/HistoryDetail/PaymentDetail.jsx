@@ -1,7 +1,8 @@
 import React from "react";
 import toRupiahFormat from "@Utils/logic/toRupiahFormat";
+import Skeleton from "react-loading-skeleton";
 
-export default function PaymentDetail({ subTotal, ongkosKirim, total }) {
+export default function PaymentDetail({ subTotal, deliveryFee, total }) {
   return (
     <div>
       <div className="border-bottom py-3">
@@ -38,7 +39,11 @@ export default function PaymentDetail({ subTotal, ongkosKirim, total }) {
                 color: "rgba(68, 68, 68, 1)",
               }}
             >
-              {toRupiahFormat(parseInt(subTotal))}
+              {subTotal ? (
+                toRupiahFormat(parseInt(subTotal))
+              ) : (
+                <Skeleton width={50} />
+              )}
             </p>
           </div>
           <div
@@ -63,7 +68,11 @@ export default function PaymentDetail({ subTotal, ongkosKirim, total }) {
                 color: "rgba(68, 68, 68, 1)",
               }}
             >
-              {toRupiahFormat(parseInt(ongkosKirim))}
+              {deliveryFee ? (
+                toRupiahFormat(parseInt(deliveryFee))
+              ) : (
+                <Skeleton width={50} />
+              )}
             </p>
           </div>
           <hr style={{ borderTop: "2px dashed rgba(196, 196, 196, 1)" }} />
@@ -89,7 +98,11 @@ export default function PaymentDetail({ subTotal, ongkosKirim, total }) {
                 color: "rgba(68, 68, 68, 1)",
               }}
             >
-              {toRupiahFormat(parseInt(total))}
+              {total ? (
+                toRupiahFormat(parseInt(total))
+              ) : (
+                <Skeleton width={50} />
+              )}
             </p>
           </div>
           <hr style={{ borderTop: "2px dashed rgba(196, 196, 196, 1)" }} />
@@ -117,7 +130,7 @@ export default function PaymentDetail({ subTotal, ongkosKirim, total }) {
                   border: "1px solid rgba(142, 145, 148, 1)",
                   borderRadius: "1px",
                   padding: "0px 2.5px",
-                  marginRight: "5px"
+                  marginRight: "5px",
                 }}
               >
                 Rp
@@ -129,7 +142,11 @@ export default function PaymentDetail({ subTotal, ongkosKirim, total }) {
                   color: "rgba(68, 68, 68, 1)",
                 }}
               >
-                {toRupiahFormat(parseInt(total))}
+                {total ? (
+                  toRupiahFormat(parseInt(total)) + "*"
+                ) : (
+                  <Skeleton width={50} />
+                )}
               </p>
             </div>
           </div>

@@ -13,14 +13,13 @@ import GetHistoryDetail from "@Api/order/getHistoryDetail";
 import cancelOrder from "@Api/order/cancelOrder";
 import Swal from "sweetalert2";
 
-
 export default function HistoryOrderDetail() {
   const { id } = useParams();
   const [status, setStatus] = useState();
   const [name, setName] = useState();
   const [address, setAddress] = useState();
   const [note, setNote] = useState();
-  const [ongkosKirim, setOngkosKirim] = useState();
+  const [deliveryFee, setDeliveryFee] = useState();
   const [total, setTotal] = useState();
   const [orderDetailProduct, setOrderDetailProduct] = useState();
   const [totalPayment, setTotalPayment] = useState();
@@ -38,7 +37,6 @@ export default function HistoryOrderDetail() {
         showConfirmButton: false,
       });
     }
-    console.log(processDeleteOrder);
   };
 
   const cancelOnClickHandler = () => {
@@ -46,17 +44,19 @@ export default function HistoryOrderDetail() {
   };
 
   useEffect(() => {
-
     const FetchData = async () => {
       const historyDetailRes = await GetHistoryDetail(id);
       setStatus(historyDetailRes.data.data.status);
       setName(historyDetailRes.data.data.name);
       setAddress(historyDetailRes.data.data.address);
       setNote(historyDetailRes.data.data.note);
-      setOngkosKirim(historyDetailRes.data.data.shipping_price);
+      setDeliveryFee(historyDetailRes.data.data.shipping_price);
       setTotal(historyDetailRes.data.data.total_price);
       setOrderDetailProduct(historyDetailRes.data.data.cart.cart_items);
-      setTotalPayment(parseInt(historyDetailRes.data.data.total_price) + parseInt(historyDetailRes.data.data.shipping_price));
+      setTotalPayment(
+        parseInt(historyDetailRes.data.data.total_price) +
+          parseInt(historyDetailRes.data.data.shipping_price)
+      );
       setWaktuDiantar(historyDetailRes.data.data.createdAt);
 
       console.log(historyDetailRes.data.data);
@@ -64,14 +64,17 @@ export default function HistoryOrderDetail() {
     FetchData();
   }, [id, status]);
 
-
   return (
     <div>
       <HeaderWithBackButton text="Detail Riwayat Pesanan" />
-      <CustomerDetail status={status} name={name} waktuDiantar={waktuDiantar} />
+      <CustomerDetail status={status} name={name} date={waktuDiantar} />
       <DeliveryDetail address={address} />
       <OrderDetail note={note} orderDetailProduct={orderDetailProduct} />
-      <PaymentDetail subTotal={total} ongkosKirim={ongkosKirim} total={totalPayment} />
+      <PaymentDetail
+        subTotal={total}
+        deliveryFee={deliveryFee}
+        total={totalPayment}
+      />
       <Button status={status} cancelOrderOnClick={cancelOnClickHandler} />
     </div>
   );

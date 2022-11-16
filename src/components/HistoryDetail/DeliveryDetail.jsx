@@ -1,4 +1,6 @@
 import React from "react";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import homeIcon from "@Assets/icons/home-icon.svg";
 
 export default function DeliveryDetail({ address }) {
@@ -34,7 +36,7 @@ export default function DeliveryDetail({ address }) {
                 color: "rgba(68, 68, 68, 1)",
               }}
             >
-              {address}
+              {address ? address : <Skeleton width={200} />}
             </p>
           </div>
         </div>
