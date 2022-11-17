@@ -8,21 +8,34 @@ import OrderDetail from "@Components/HistoryDetail/OrderDetail";
 import PaymentDetail from "@Components/HistoryDetail/PaymentDetail";
 import Button from "@Components/HistoryDetail/Button";
 import deleteModal from "@Utils/interface/deleteModal";
-import GetHistoryDetail from "@Api/order/getHistoryDetail";
+import getHistoryDetail from "@Api/order/getHistoryDetail";
 import cancelOrder from "@Api/order/cancelOrder";
 import Swal from "sweetalert2";
 
 export default function HistoryOrderDetail() {
   const { id } = useParams();
+  const [historyOrderData, setHistoryOrderData] = useState({
+    id: "",
+    name: "",
+    phone: "",
+    address: "",
+    note: "",
+    status: "",
+    total_product_price: "",
+    shipping_price: "",
+    total_price: "",
+    createdAt: "",
+    updatedAt: "",
+    cart: {
+      id: "",
+      status: "",
+      createdAt: "",
+      updatedAt: "",
+      UserId: "",
+      cart_items: [],
+    },
+  });
   const [status, setStatus] = useState();
-  const [name, setName] = useState();
-  const [address, setAddress] = useState();
-  const [note, setNote] = useState();
-  const [deliveryFee, setDeliveryFee] = useState();
-  const [total, setTotal] = useState();
-  const [orderDetailProduct, setOrderDetailProduct] = useState();
-  const [totalPayment, setTotalPayment] = useState();
-  const [waktuDiantar, setWaktuDiantar] = useState();
 
   const deleteOrderHandler = async () => {
     const processDeleteOrder = await cancelOrder(id);
@@ -44,37 +57,40 @@ export default function HistoryOrderDetail() {
 
   useEffect(() => {
     const FetchData = async () => {
-      const historyDetailRes = await GetHistoryDetail(id);
-      setStatus(historyDetailRes.data.data.status);
-      setName(historyDetailRes.data.data.name);
-      setAddress(historyDetailRes.data.data.address);
-      setNote(historyDetailRes.data.data.note);
-      setDeliveryFee(historyDetailRes.data.data.shipping_price);
-      setTotal(historyDetailRes.data.data.total_price);
-      setOrderDetailProduct(historyDetailRes.data.data.cart.cart_items);
-      setTotalPayment(
-        parseInt(historyDetailRes.data.data.total_price) +
-          parseInt(historyDetailRes.data.data.shipping_price)
-      );
-      setWaktuDiantar(historyDetailRes.data.data.createdAt);
-
-      console.log(historyDetailRes.data.data);
+      const historyDetailRes = await getHistoryDetail(id);
+      setHistoryOrderData(historyDetailRes.data.data);
     };
     FetchData();
   }, [id, status]);
 
   return (
     <div>
-      <HeaderWithBackButton text="Detail Riwayat Pesanan" backPath="/historyorder" />
-      <CustomerDetail status={status} name={name} date={waktuDiantar} />
-      <DeliveryDetail address={address} />
-      <OrderDetail note={note} orderDetailProduct={orderDetailProduct} />
-      <PaymentDetail
-        subTotal={total}
-        deliveryFee={deliveryFee}
-        total={totalPayment}
+      <HeaderWithBackButton
+        text="Detail Riwayat Pesanan"
+        backPath="/historyorder"
       />
-      <Button status={status} cancelOrderOnClick={cancelOnClickHandler} />
+      <CustomerDetail
+        status={historyOrderData.status}
+        name={historyOrderData.name}
+        date={historyOrderData.createdAt}
+      />
+      <DeliveryDetail address={historyOrderData.address} />
+      <OrderDetail
+        note={historyOrderData.note}
+        orderDetailProduct={historyOrderData.cart.cart_items}
+      />
+      <PaymentDetail
+        subTotal={historyOrderData.total_price}
+        deliveryFee={historyOrderData.shipping_price}
+        total={
+          parseInt(historyOrderData.total_price) +
+          parseInt(historyOrderData.shipping_price)
+        }
+      />
+      <Button
+        status={historyOrderData.status}
+        cancelOrderOnClick={cancelOnClickHandler}
+      />
     </div>
   );
 }

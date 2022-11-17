@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const GetHistoryDetail = async (id) => {
+const getHistoryDetail = async (id) => {
     try {
         const res = await axios.get("http://108.137.148.110/api/v1/order/history/" + id, {
             headers: {
@@ -13,4 +13,4 @@ const GetHistoryDetail = async (id) => {
     }
 };
 
-export default GetHistoryDetail;
+export default getHistoryDetail;
