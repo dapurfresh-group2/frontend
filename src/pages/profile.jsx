@@ -13,12 +13,13 @@ import vectorTentang from "@Assets/images/profil/vector-tentang.png";
 import getProfile from "@Api/profile/getProfile";
 import SkeletonProfileImg from "@Components/SkeletonLoading/SkeletonProfileImg";
 import SkeletonProfileName from "../components/SkeletonLoading/SkeletonProfileName";
+import logoutModal from "../utils/interface/logoutModal";
 
 function Profile() {
   const [profilData, setProfilData] = useState([]);
   const [avatarImgApi, setAvatarImgApi] = useState("");
 
-  function Logout() {
+  function logout() {
     localStorage.removeItem("token");
     window.location = "/login";
   }
@@ -49,7 +50,7 @@ function Profile() {
         </div>
         <div className="d-flex flex-column mx-3">
           {profilData.name ? (
-            <div className="profil-name">{profilData.name}</div>
+            <div className="profil-name text-capitalize">{profilData.name}</div>
           ) : (
             <SkeletonProfileName />
           )}
@@ -114,7 +115,12 @@ function Profile() {
       </div>
 
       <div className="d-flex justify-content-center mx-3 mt-5 mb-3">
-        <button className="btn-logout" onClick={Logout}>
+        <button
+          className="btn-logout"
+          onClick={() => {
+            logoutModal(logout);
+          }}
+        >
           Log Out
         </button>
       </div>
