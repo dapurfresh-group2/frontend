@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
+
 import Header from "@Components/Header";
 import Category from "@Components/Category";
 import ProductCard from "@Components/ProductCard";
 import MenuBar from "@Components/MenuBar";
 import ButtonCart from "@Components/Button/ButtonCart";
-import getAllProducts from "@Api/product/getAllProducts";
-import getAllCategories from "@Api/product/getAllCategories";
 import SkeletonCategory from "@Components/SkeletonLoading/SkeletonCategory";
 import SkeletonProductList from "@Components/SkeletonLoading/SkeletonProductList";
+
+import getAllProducts from "@Api/product/getAllProducts";
+import getAllCategories from "@Api/product/getAllCategories";
 
 export default function Home() {
   const [categoriesData, setCategoriesData] = useState([]);

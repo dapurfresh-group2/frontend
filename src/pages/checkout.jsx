@@ -1,5 +1,5 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+
 import HeaderTextWithBackButton from "@Components/Header/HeaderWithBackButton";
 import CustomerData from "@Components/Checkout/CustomerData";
 import CustomerNote from "@Components/Checkout/CustomerNote";

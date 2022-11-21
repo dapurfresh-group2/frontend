@@ -1,14 +1,16 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import getHistoryOrder from "@Api/order/getHistoryOrder";
-import convertDate from "@Utils/logic/convertTime";
+import React, { useEffect, useState } from "react";
+
 import HistoryOrderCard from "@Components/HistoryOrderCard";
 import MenuBar from "@Components/MenuBar";
 import HeaderWithText from "@Components/Header/HeaderWithText";
 import OrderHistoryNotFound from "@Components/NotFound/OrderHistoryNotFound";
 import SkeletonHistory from "@Components/SkeletonLoading/SkeletonHistory";
+
+import getHistoryOrder from "@Api/order/getHistoryOrder";
+
+import convertDate from "@Utils/logic/convertTime";
 import getHistoryProductTitle from "@Utils/logic/getHistoryProductTitle";
-import getPreviousDay from "../utils/logic/getPreviousDay";
+import getPreviousDay from "@Utils/logic/getPreviousDay";
 
 export default function HistoryOrder() {
   const [historyData, setHistoryData] = useState();

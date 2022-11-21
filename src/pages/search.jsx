@@ -1,15 +1,19 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+
 import "@Assets/styles/searchpage.css";
 import arrowButton from "@Assets/icons/arrow-icon.svg";
 import iconSearch from "@Assets/icons/search-icon.svg";
+import resetInputImg from "@Assets/icons/cancel-icon.svg";
+
 import ProductCard from "@Components/ProductCard";
 import ButtonCart from "@Components/Button/ButtonCart";
-import resetInputImg from "@Assets/icons/cancel-icon.svg";
-import searchProduct from "@Api/product/searchProduct";
 import NotFoundProduct from "@Components/NotFound/NotFoundProduct";
-import data from "@Data/favoriteProduct";
 import SkeletonProductList from "@Components/SkeletonLoading/SkeletonProductList";
+
+import searchProduct from "@Api/product/searchProduct";
+
+import data from "@Data/favoriteProduct";
+
 
 function PageSearch() {
   const [isLoading, setIsLoading] = useState(false);

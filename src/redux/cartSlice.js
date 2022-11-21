@@ -17,7 +17,7 @@ const cartSlice = createSlice({
       }
     },
     [updateCartProductQuantity.fulfilled]: (state, action) => {
-      console.log(action.payload);
+      return;
     },
   },
 });

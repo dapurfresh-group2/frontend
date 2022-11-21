@@ -1,15 +1,15 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
-import putProfile from "@Api/profile/putProfile";
-import getProfile from "@Api/profile/getProfile";
+import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
-
 import "@Assets/styles/profil.css";
+
+import cameraImg from "@Assets/images/profil/camera.png";
+
 import InputEditProfil from "@Components/Profil/inputeditprofil";
 import HeaderTextWithBackButton from "@Components/Header/HeaderWithBackButton";
-import cameraImg from "@Assets/images/profil/camera.png";
+
+import putProfile from "@Api/profile/putProfile";
+import getProfile from "@Api/profile/getProfile";
 
 function EditProfile() {
   const [name, setName] = useState("");

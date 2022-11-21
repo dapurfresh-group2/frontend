@@ -1,14 +1,14 @@
 // Ubah ke styles folder
-import "@Assets/styles/loginRegister.css";
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+import Swal from "sweetalert2";
 
-import HeadLoginRegister from "@Components/Header/HeadLoginRegister";
+import "@Assets/styles/loginRegister.css";
 import line1 from "@Assets/images/loginregister/line-1.png";
 import line2 from "@Assets/images/loginregister/line-2.png";
+
+import HeadLoginRegister from "@Components/Header/HeadLoginRegister";
 import FormLoginRegister from "@Components/LoginRegister";
 
-import Swal from "sweetalert2";
 import login from "@Api/auth/login";
 
 export default function Login() {

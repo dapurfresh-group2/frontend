@@ -14,7 +14,6 @@ const updateCartProductQuantity = createAsyncThunk(
           },
         }
       );
-      console.log(res);
       return res.data.data;
     } catch (error) {
       return error;

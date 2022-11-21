@@ -1,19 +1,20 @@
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import "@Assets/styles/profil.css";
-import HeaderWithText from "@Components/Header/HeaderWithText";
-import MenuBar from "@Components/MenuBar";
 import arrowProfilSmall from "@Assets/icons/arrow-profil-small.png";
 import arrowProfilBig from "@Assets/icons/arrow-profil-big.png";
 import vectorSyarat from "@Assets/images/profil/vector-syarat.png";
 import vectorPrivacy from "@Assets/images/profil/vector-privacy.png";
 import vectorTentang from "@Assets/images/profil/vector-tentang.png";
-import getProfile from "@Api/profile/getProfile";
+
+import HeaderWithText from "@Components/Header/HeaderWithText";
+import MenuBar from "@Components/MenuBar";
 import SkeletonProfileImg from "@Components/SkeletonLoading/SkeletonProfileImg";
-import SkeletonProfileName from "../components/SkeletonLoading/SkeletonProfileName";
-import logoutModal from "../utils/interface/logoutModal";
+import SkeletonProfileName from "@Components/SkeletonLoading/SkeletonProfileName";
+
+import getProfile from "@Api/profile/getProfile";
+
+import logoutModal from "@Utils/interface/logoutModal";
 
 function Profile() {
   const [profilData, setProfilData] = useState([]);

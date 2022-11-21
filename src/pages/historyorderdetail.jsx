@@ -1,16 +1,18 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
+
 import HeaderWithBackButton from "@Components/Header/HeaderWithBackButton";
 import CustomerDetail from "@Components/HistoryDetail/CustomerDetail";
 import DeliveryDetail from "@Components/HistoryDetail/DeliveryDetail";
 import OrderDetail from "@Components/HistoryDetail/OrderDetail";
 import PaymentDetail from "@Components/HistoryDetail/PaymentDetail";
 import Button from "@Components/HistoryDetail/Button";
-import deleteModal from "@Utils/interface/deleteModal";
+
 import getHistoryDetail from "@Api/order/getHistoryDetail";
 import cancelOrder from "@Api/order/cancelOrder";
-import Swal from "sweetalert2";
+
+import deleteModal from "@Utils/interface/deleteModal";
 
 export default function HistoryOrderDetail() {
   const { id } = useParams();

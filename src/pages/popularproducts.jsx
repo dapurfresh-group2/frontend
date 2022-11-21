@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+
 import ProductCard from "@Components/ProductCard";
 import HeaderTextWithBackButton from "@Components/Header/HeaderWithBackButton";
-import getPopularProducts from "@Api/product/getPopularProducts";
 import SkeletonProductList from "@Components/SkeletonLoading/SkeletonProductList";
+
+import getPopularProducts from "@Api/product/getPopularProducts";
 
 function ProdukTerpopuler() {
   const [products, setProducts] = useState([]);

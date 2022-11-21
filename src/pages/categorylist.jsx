@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import "@Assets/styles/listkategori.css";
-import ProductCard from "@Components/ProductCard";
+
 import arrowButton from "@Assets/icons/arrow-icon.svg";
+
+import ProductCard from "@Components/ProductCard";
 import SearchCategory from "@Components/Search/SearchCategory";
 import ButtonCart from "@Components/Button/ButtonCart";
-import getProductsByCategory from "@Api/product/getProductsByCategory";
-import getAllCategories from "@Api/product/getAllCategories";
 import NotFoundProduct from "@Components/NotFound/NotFoundProduct";
 import SkeletonProductList from "@Components/SkeletonLoading/SkeletonProductList";
+
+import getProductsByCategory from "@Api/product/getProductsByCategory";
+import getAllCategories from "@Api/product/getAllCategories";
 
 function ListKategori() {
   const [searchParams, setSearchParams] = useSearchParams();
